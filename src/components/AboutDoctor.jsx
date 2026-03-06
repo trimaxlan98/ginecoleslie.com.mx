@@ -27,26 +27,82 @@ const AboutDoctor = () => {
   ];
 
   return (
-    <section id="sobre" className="py-20 bg-gradient-to-b from-white to-pastel-pink-light">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Image */}
+    <section
+      id="sobre"
+      className="relative py-24 overflow-hidden"
+      style={{ background: 'linear-gradient(160deg, #FEFAFA 0%, #FFF5F8 55%, #FAF0F2 100%)' }}
+    >
+      {/* Organic background accent */}
+      <div
+        className="absolute -top-20 -left-20 w-80 h-80 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse, rgba(255,182,217,0.35), transparent 68%)',
+          borderRadius: '60% 40% 55% 45% / 50% 60% 40% 50%',
+          filter: 'blur(40px)',
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-64 h-64 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse, rgba(224,176,176,0.28), transparent 68%)',
+          borderRadius: '45% 55% 40% 60% / 55% 45% 65% 35%',
+          filter: 'blur(32px)',
+        }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid md:grid-cols-2 gap-14 items-center">
+
+          {/* Image — organic liquid frame */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.85 }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            {/* Glow behind frame */}
+            <div
+              className="absolute inset-0 -z-10"
+              style={{
+                background: 'radial-gradient(ellipse at 45% 50%, #FFB6D9, transparent 65%)',
+                filter: 'blur(28px)',
+                opacity: 0.5,
+                transform: 'translate(18px, 18px) scale(1.08)',
+                borderRadius: '56% 44% 50% 50% / 52% 46% 54% 48%',
+              }}
+            />
+            {/* Organic border ring */}
+            <div
+              className="absolute inset-0 border -z-10"
+              style={{
+                borderColor: 'rgba(224,176,176,0.35)',
+                borderRadius: '48% 52% 56% 44% / 54% 42% 58% 46%',
+                transform: 'translate(-16px, -16px) scale(1.07)',
+              }}
+            />
+
+            {/* Photo — liquid frame */}
+            <div
+              className="relative overflow-hidden shadow-xl border-2"
+              style={{
+                borderRadius: '56% 44% 50% 50% / 52% 46% 54% 48%',
+                borderColor: 'rgba(255,255,255,0.85)',
+              }}
+            >
+              <div
+                className="absolute inset-0 z-10 pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(180deg, transparent 50%, rgba(201,133,123,0.18) 100%)',
+                }}
+              />
               <img
                 src="https://images.unsplash.com/photo-1675270714610-11a5cadcc7b3"
                 alt="Dra. Leslie Ordaz Huerta, especialista en ginecología y obstetricia"
                 className="w-full h-auto object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-pastel-pink-primary/20 to-transparent"></div>
             </div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-pastel-pink-secondary rounded-full blur-3xl opacity-30"></div>
           </motion.div>
 
           {/* Content */}
@@ -54,23 +110,38 @@ const AboutDoctor = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.85 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-              Sobre la Dra. Leslie Ordaz Huerta
-            </h2>
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              Con una sólida formación académica y años de experiencia clínica, la Dra. Leslie Ordaz Huerta 
-              se ha destacado por brindar atención médica de la más alta calidad en el campo de la ginecología 
-              y obstetricia.
+            <p
+              className="mb-4"
+              style={{
+                color: '#C9857B',
+                letterSpacing: '0.22em',
+                fontSize: '11px',
+                textTransform: 'uppercase',
+                fontWeight: '500',
+              }}
+            >
+              Sobre la doctora
             </p>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Como médico staff del IMSS y con consulta privada en clínicas de prestigio, ofrece un servicio 
-              integral que combina experiencia profesional, tecnología de vanguardia y un trato humano y 
-              personalizado para cada paciente.
+            <h2
+              className="font-bold text-slate-800 mb-6 leading-tight"
+              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', letterSpacing: '0.04em' }}
+            >
+              Dra. Leslie Ordaz Huerta
+            </h2>
+            <p className="text-slate-500 mb-5 leading-relaxed" style={{ fontSize: '1.04rem' }}>
+              Con una sólida formación académica y años de experiencia clínica, la Dra. Leslie
+              Ordaz Huerta se ha destacado por brindar atención médica de la más alta calidad
+              en el campo de la ginecología y obstetricia.
+            </p>
+            <p className="text-slate-500 mb-9 leading-relaxed" style={{ fontSize: '1.04rem' }}>
+              Como médico staff del IMSS y con consulta privada en clínicas de prestigio, ofrece
+              un servicio integral que combina experiencia profesional, tecnología de vanguardia y
+              un trato humano y personalizado para cada paciente.
             </p>
 
-            {/* Highlights Grid */}
+            {/* Highlights — glass cards */}
             <div className="grid grid-cols-2 gap-4">
               {highlights.map((item, index) => (
                 <motion.div
@@ -79,11 +150,28 @@ const AboutDoctor = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-pastel-pink-tertiary border border-pastel-pink-secondary p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                  className="glass-card group p-4 cursor-default"
+                  style={{ borderRadius: '1.25rem 0.5rem 1.25rem 0.5rem' }}
                 >
-                  <item.icon className="text-pastel-pink-primary mb-2" size={28} />
-                  <h3 className="font-semibold text-gray-800 mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.description}</p>
+                  {/* Organic icon container */}
+                  <div
+                    className="w-10 h-10 flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,182,217,0.4), rgba(224,176,176,0.3))',
+                      borderRadius: '62% 38% 55% 45% / 50% 62% 38% 50%',
+                    }}
+                  >
+                    <item.icon size={20} style={{ color: '#C9857B' }} />
+                  </div>
+                  <h3
+                    className="font-semibold text-slate-700 mb-1"
+                    style={{ fontSize: '0.88rem', letterSpacing: '0.02em' }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-400 leading-snug" style={{ fontSize: '0.78rem' }}>
+                    {item.description}
+                  </p>
                 </motion.div>
               ))}
             </div>

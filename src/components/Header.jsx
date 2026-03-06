@@ -54,38 +54,61 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-3' : 'bg-white/95 backdrop-blur-sm py-5'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+        isScrolled
+          ? 'py-3 shadow-sm'
+          : 'py-5'
       }`}
+      style={{
+        background: isScrolled
+          ? 'rgba(254, 250, 250, 0.88)'
+          : 'rgba(254, 250, 250, 0.82)',
+        backdropFilter: 'blur(18px) saturate(1.4)',
+        WebkitBackdropFilter: 'blur(18px) saturate(1.4)',
+        borderBottom: isScrolled ? '1px solid rgba(224,176,176,0.18)' : 'none',
+      }}
     >
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Professional Logo */}
+          {/* Logo */}
           <Link to="/" onClick={(e) => handleNavClick(e, '/#inicio')} className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-pastel-pink-primary to-pastel-pink-secondary rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all border-2 border-white ring-2 ring-pastel-pink-tertiary">
-              <span className="text-white font-serif font-bold text-lg tracking-wider">LA</span>
+            {/* Organic logo mark */}
+            <div
+              className="w-11 h-11 flex items-center justify-center shadow-md transition-shadow duration-300 group-hover:shadow-lg border-2 border-white flex-shrink-0"
+              style={{
+                background: 'linear-gradient(135deg, #E0B0B0, #C9857B)',
+                borderRadius: '62% 38% 55% 45% / 50% 62% 38% 50%',
+              }}
+            >
+              <span className="text-white font-serif font-bold text-base" style={{ letterSpacing: '0.05em' }}>LA</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg md:text-xl font-bold text-gray-800 tracking-tight group-hover:text-pastel-pink-primary transition-colors leading-tight">
+              <span
+                className="font-bold text-slate-700 transition-colors duration-200 group-hover:text-[#C9857B] leading-tight"
+                style={{ fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', letterSpacing: '0.03em' }}
+              >
                 Dra. Leslie Alejandra
               </span>
-              <span className="text-xs text-gray-500 font-medium tracking-wide">
-                Ordaz Huerta • Ginecóloga
+              <span
+                className="font-normal text-slate-400"
+                style={{ fontSize: '10.5px', letterSpacing: '0.08em', textTransform: 'uppercase' }}
+              >
+                Ordaz Huerta · Ginecóloga
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            <a href="/#inicio" onClick={(e) => handleNavClick(e, '/#inicio')} className={`px-4 py-2 font-medium transition-colors ${location.pathname === '/' && !location.hash ? 'text-pastel-pink-primary' : 'text-gray-700 hover:text-pastel-pink-primary'}`}>Inicio</a>
-            <a href="/#sobre" onClick={(e) => handleNavClick(e, '/#sobre')} className="px-4 py-2 text-gray-700 hover:text-pastel-pink-primary font-medium transition-colors">Dra. Leslie</a>
-            
+            <a href="/#inicio" onClick={(e) => handleNavClick(e, '/#inicio')} style={{ letterSpacing: '0.03em', fontSize: '0.9rem' }} className={`px-4 py-2 font-medium transition-colors ${location.pathname === '/' && !location.hash ? 'text-[#C9857B]' : 'text-slate-600 hover:text-[#C9857B]'}`}>Inicio</a>
+            <a href="/#sobre" onClick={(e) => handleNavClick(e, '/#sobre')} style={{ letterSpacing: '0.03em', fontSize: '0.9rem' }} className="px-4 py-2 text-slate-600 hover:text-[#C9857B] font-medium transition-colors">Dra. Leslie</a>
+
             {/* Services Dropdown */}
             <div className="relative group" onMouseEnter={() => setIsServicesOpen(true)} onMouseLeave={() => setIsServicesOpen(false)}>
-              <button className={`flex items-center px-4 py-2 font-medium transition-colors ${location.pathname !== '/' ? 'text-pastel-pink-primary' : 'text-gray-700 hover:text-pastel-pink-primary'}`}>
-                Servicios <ChevronDown size={16} className="ml-1 opacity-70 group-hover:rotate-180 transition-transform duration-300" />
+              <button style={{ letterSpacing: '0.03em', fontSize: '0.9rem' }} className={`flex items-center px-4 py-2 font-medium transition-colors ${location.pathname !== '/' ? 'text-[#C9857B]' : 'text-slate-600 hover:text-[#C9857B]'}`}>
+                Servicios <ChevronDown size={15} className="ml-1 opacity-60 group-hover:rotate-180 transition-transform duration-300" />
               </button>
-              
+
               <AnimatePresence>
                 {isServicesOpen && (
                   <motion.div
@@ -93,7 +116,13 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 overflow-hidden"
+                    className="absolute top-full left-0 w-64 rounded-2xl shadow-xl py-2 overflow-hidden border"
+                    style={{
+                      background: 'rgba(254,250,250,0.92)',
+                      backdropFilter: 'blur(16px)',
+                      WebkitBackdropFilter: 'blur(16px)',
+                      borderColor: 'rgba(224,176,176,0.25)',
+                    }}
                   >
                     {serviceLinks.map((link, idx) => (
                       <Link
@@ -110,10 +139,19 @@ const Header = () => {
               </AnimatePresence>
             </div>
             
-            <a href="/#testimonios" onClick={(e) => handleNavClick(e, '/#testimonios')} className="px-4 py-2 text-gray-700 hover:text-pastel-pink-primary font-medium transition-colors">Testimonios</a>
-            <a href="/#contacto-form" onClick={(e) => handleNavClick(e, '/#contacto-form')} className="px-4 py-2 text-gray-700 hover:text-pastel-pink-primary font-medium transition-colors">Contacto</a>
+            <a href="/#testimonios" onClick={(e) => handleNavClick(e, '/#testimonios')} style={{ letterSpacing: '0.03em', fontSize: '0.9rem' }} className="px-4 py-2 text-slate-600 hover:text-[#C9857B] font-medium transition-colors">Testimonios</a>
+            <a href="/#contacto-form" onClick={(e) => handleNavClick(e, '/#contacto-form')} style={{ letterSpacing: '0.03em', fontSize: '0.9rem' }} className="px-4 py-2 text-slate-600 hover:text-[#C9857B] font-medium transition-colors">Contacto</a>
             
-            <a href="/#contacto-form" onClick={(e) => handleNavClick(e, '/#contacto-form')} className="ml-4 px-6 py-2.5 bg-gradient-to-r from-pastel-pink-primary to-pastel-pink-secondary text-white rounded-full font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all">
+            <a
+              href="/#contacto-form"
+              onClick={(e) => handleNavClick(e, '/#contacto-form')}
+              className="btn-bloom ml-4 px-6 py-2.5 text-white rounded-full font-medium shadow-md transition-all"
+              style={{
+                background: 'linear-gradient(135deg, #E0B0B0 0%, #C9857B 60%, #d4706a 100%)',
+                letterSpacing: '0.04em',
+                fontSize: '0.88rem',
+              }}
+            >
               Agendar Cita
             </a>
           </div>

@@ -43,8 +43,32 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicios" className="py-20 bg-gradient-to-b from-white to-pastel-pink-light/30">
-      <div className="container mx-auto px-4">
+    <section
+      id="servicios"
+      className="relative py-24 overflow-hidden"
+      style={{ background: 'linear-gradient(150deg, #FEFAFA 0%, #FFF0F5 40%, #FAF0F2 100%)' }}
+    >
+      {/* Organic blobs — reveal the glass effect on cards */}
+      <div
+        className="absolute top-16 right-8 w-80 h-80 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse, #FFB6D9, transparent 68%)',
+          borderRadius: '60% 40% 55% 45% / 50% 60% 40% 50%',
+          filter: 'blur(34px)',
+          opacity: 0.28,
+        }}
+      />
+      <div
+        className="absolute bottom-12 left-10 w-64 h-64 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse, #FFC9E3, transparent 68%)',
+          borderRadius: '45% 55% 40% 60% / 55% 45% 65% 35%',
+          filter: 'blur(28px)',
+          opacity: 0.24,
+        }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,17 +76,33 @@ const Services = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <p
+            className="mb-3"
+            style={{
+              color: '#C9857B',
+              letterSpacing: '0.22em',
+              fontSize: '11px',
+              textTransform: 'uppercase',
+              fontWeight: '500',
+            }}
+          >
+            Lo que ofrezco
+          </p>
+          <h2
+            className="font-bold text-slate-800 mb-4"
+            style={{ fontSize: 'clamp(1.9rem, 4vw, 3rem)', letterSpacing: '0.04em' }}
+          >
             Especialidades Médicas
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Atención médica especializada en ginecología y obstetricia con los más altos estándares de calidad y calidez humana.
+          <p className="text-slate-500 max-w-2xl mx-auto leading-relaxed" style={{ fontSize: '1.05rem' }}>
+            Atención médica especializada en ginecología y obstetricia con los más altos
+            estándares de calidad y calidez humana.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
           {services.map((service, index) => (
-            <ServiceCard 
+            <ServiceCard
               key={index}
               title={service.title}
               description={service.description}

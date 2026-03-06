@@ -6,6 +6,122 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Design Tokens ── */
+:root {
+  --rose-gold: #E0B0B0;
+  --soft-pink: #FFB6D9;
+  --silk-white: #FEFAFA;
+  --deep-rose: #C9857B;
+  --pearl: #FAF0F0;
+  --blush: #FFF0F5;
+}
+
+/* ── Base ── */
 body {
-    font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
+  background-color: #FEFAFA;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #3d2a2d;
+}
+
+/* ── Airy heading tracking ── */
+h1 {
+  letter-spacing: 0.025em;
+}
+h2 {
+  letter-spacing: 0.04em;
+}
+h3 {
+  letter-spacing: 0.02em;
+}
+
+/* ── Bloom micro-interaction ─────────────────────────
+   Simulates a flower opening on hover: scale + radial glow pulse
+   ─────────────────────────────────────────────────── */
+@keyframes bloom-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(224, 176, 176, 0.55),
+                0 4px 24px rgba(201, 133, 123, 0.2);
+  }
+  45% {
+    transform: scale(1.055);
+    box-shadow: 0 0 0 14px rgba(224, 176, 176, 0),
+                0 8px 32px rgba(201, 133, 123, 0.3);
+  }
+  100% {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 0 rgba(224, 176, 176, 0),
+                0 6px 28px rgba(201, 133, 123, 0.25);
+  }
+}
+
+.btn-bloom {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease-out;
+}
+.btn-bloom:hover {
+  animation: bloom-pulse 0.58s ease-out forwards;
+}
+.btn-bloom:active {
+  transform: scale(0.97) !important;
+  animation: none;
+}
+
+/* ── Glassmorphism ──────────────────────────────────
+   Floating glass cards — requires a colored background
+   behind them to reveal the frosted effect.
+   ─────────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.60) !important;
+  backdrop-filter: blur(16px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.88) !important;
+  box-shadow:
+    0 8px 32px rgba(224, 176, 176, 0.18),
+    0 2px 8px rgba(201, 133, 123, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.74) !important;
+  box-shadow:
+    0 16px 48px rgba(224, 176, 176, 0.26),
+    0 4px 12px rgba(201, 133, 123, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  transform: translateY(-2px);
+}
+
+/* Glass for dark backgrounds (service cards over images) */
+.glass-dark {
+  background: rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+/* ── Liquid / Organic shapes ── */
+.liquid-frame {
+  border-radius: 58% 42% 48% 52% / 54% 48% 52% 46%;
+  overflow: hidden;
+}
+.liquid-blob {
+  border-radius: 68% 32% 47% 53% / 56% 63% 37% 44%;
+}
+.liquid-blob-alt {
+  border-radius: 42% 58% 63% 37% / 48% 57% 43% 52%;
+}
+
+/* ── Organic section fade edge ── */
+.fade-up-edge::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, #FEFAFA, transparent);
+  pointer-events: none;
 }
