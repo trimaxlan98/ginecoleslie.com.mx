@@ -23,10 +23,10 @@ const VISIBLE_MS  = 3500;
 const EXIT_MS     = 650;
 const PETAL_ANGLES = [0, 60, 120, 180, 240, 300];
 
-/* ─── Constantes de color ─────────────────────────── */
-const ROSE_GOLD = '#E0B0B0';
-const DEEP_ROSE = '#C9857B';
-const SOFT_PINK = '#FFB6D9';
+/* ─── Paleta de marca ────────────────────────────── */
+const ROSE_GOLD = '#D09BAD';   /* mauve rosa   — trazo principal, pétalos */
+const DEEP_ROSE = '#6E506F';   /* ciruela      — disco central, texto     */
+const SOFT_PINK = '#E9C3D2';   /* mauve claro  — acentos, fimbrias, halo  */
 
 /* ─── Coordenadas de la composición (viewBox 0 0 200 180) ──
    Útero: fundus arriba (y≈53), cuello abajo (y≈150)
@@ -90,7 +90,7 @@ const LoadingScreen = ({ onComplete, logoSrc }) => {
             fontFamily: 'DM Sans, sans-serif',
             /* Fondo blanco seda con gradiente radial muy sutil */
             background:
-              'radial-gradient(ellipse at 50% 42%, #FFF5F8 0%, #FEFAFA 60%, #FAF0F2 100%)',
+              'radial-gradient(ellipse at 50% 42%, #f9f0f4 0%, #f4edec 60%, #f0e8ed 100%)',
           }}
         >
 
