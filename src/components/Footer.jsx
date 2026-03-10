@@ -40,14 +40,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-pastel-pink-primary to-pastel-pink-secondary rounded-full flex items-center justify-center shadow-md">
-                <span className="text-white font-serif font-bold text-lg">LA</span>
-              </div>
-              <span className="text-xl font-bold text-gray-800 leading-tight">
-                Dra. Leslie Alejandra<br/>
-                <span className="text-sm font-normal text-gray-500">Ordaz Huerta</span>
-              </span>
+            <div className="mb-5">
+              <img
+                src="/logo-dra-leslie.png"
+                alt="Dra. Leslie Ordaz — Ginecología y Obstetricia"
+                style={{ height: '90px', width: 'auto', objectFit: 'contain' }}
+              />
             </div>
             <p className="text-gray-600 mb-6 text-sm leading-relaxed">
               Especialista en Ginecología y Obstetricia de la Universidad Veracruzana. Atención médica integral, empática y de calidad.

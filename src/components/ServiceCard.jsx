@@ -3,82 +3,152 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const ServiceCard = ({ title, description, image, href, index }) => {
+/* ────────────────────────────────────────────────────────────
+   ServiceCard — Paleta exclusiva de marca
+   #6e506f  ciruela   · #d09bad  mauve · #e9c3d2  claro · #f4edec crema
+
+   Anatomía (440px):
+   ┌──────────────────────────────┐
+   │  barra acento animada  (3px) │  ← brand-card-accent
+   │  [imagen  ─ 42%]             │    con overlay mauve suave
+   ├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┤  ← plat-divider
+   │  [contenido ─ 58%]           │
+   │   icono · número · título    │
+   │   descripción · CTA          │
+   └──────────────────────────────┘
+   ──────────────────────────────────────────────────────────── */
+
+const P  = '#6e506f';
+const M  = '#d09bad';
+const ML = '#e9c3d2';
+const BG = '#f4edec';
+
+const ServiceCard = ({ title, description, image, href, index, icon }) => {
+  const cardNum = String(index + 1).padStart(2, '0');
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 36 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.55, delay: index * 0.09 }}
-      className="h-full"
+      transition={{
+        duration: 0.6,
+        delay: index * 0.09,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+      whileHover={{ y: -5 }}
     >
-      <Link to={href} className="block h-full group">
-        <div
-          className="relative overflow-hidden shadow-md transition-all duration-500 group-hover:shadow-xl"
-          style={{
-            height: '380px',
-            borderRadius: '1.75rem 0.75rem 1.75rem 0.75rem',
-          }}
-        >
-          {/* Background image */}
-          <img
-            src={image}
-            alt={title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
-            style={{ transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)' }}
-          />
+      <Link to={href} className="block group" aria-label={`Ver servicio: ${title}`}>
+        <div className="brand-card" style={{ height: '440px', display: 'flex', flexDirection: 'column' }}>
 
-          {/* Gradient veil — light at top, darker at bottom for readability */}
+          {/* ── Barra acento animada ── */}
+          <div className="brand-card-accent flex-none" />
+
+          {/* ── ZONA IMAGEN (42%) ── */}
           <div
-            className="absolute inset-0 transition-opacity duration-500"
-            style={{
-              background:
-                'linear-gradient(180deg, rgba(45,20,28,0.05) 0%, rgba(45,20,28,0.18) 45%, rgba(45,20,28,0.72) 100%)',
-            }}
-          />
-
-          {/* Hover bloom ring */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{
-              background:
-                'radial-gradient(ellipse at 50% 100%, rgba(224,176,176,0.22) 0%, transparent 65%)',
-            }}
-          />
-
-          {/* Glass content panel */}
-          <div
-            className="glass-dark absolute bottom-0 left-0 right-0 p-6 transition-all duration-300"
-            style={{ borderRadius: '0 0 1.75rem 0.75rem' }}
+            className="relative flex-none overflow-hidden"
+            style={{ height: '42%' }}
           >
-            {/* Petal accent dot */}
+            <img
+              src={`${image}?w=640&q=78`}
+              alt=""
+              aria-hidden="true"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              style={{ filter: 'brightness(0.75) saturate(0.9)' }}
+            />
+
+            {/* Overlay mauve de marca — cálido y cohesivo */}
             <div
-              className="w-5 h-5 mb-3 transition-transform duration-300 group-hover:scale-125"
+              className="absolute inset-0"
               style={{
-                background: 'linear-gradient(135deg, #E0B0B0, #FFB6D9)',
-                borderRadius: '62% 38% 55% 45% / 50% 62% 38% 50%',
+                background: `linear-gradient(185deg, ${P}50 0%, ${P}C0 100%)`,
               }}
             />
 
+            {/* Número de tarjeta — Playfair italic */}
+            <span
+              className="absolute top-4 right-5 select-none"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontStyle: 'italic',
+                fontSize: '0.88rem',
+                color: 'rgba(255,255,255,0.45)',
+                letterSpacing: '0.06em',
+                lineHeight: 1,
+              }}
+            >
+              {cardNum}
+            </span>
+
+            {/* Línea divisora de marca al pie de la imagen */}
+            <div
+              className="absolute bottom-0 left-0 right-0 plat-divider opacity-60 group-hover:opacity-100 transition-opacity duration-400"
+            />
+          </div>
+
+          {/* ── ZONA CONTENIDO (58%) ── */}
+          <div
+            className="flex flex-col flex-1 p-6"
+            style={{ background: '#ffffff' }}
+          >
+            {/* Icono — paleta de marca */}
+            <div
+              className="plat-icon mb-3.5 flex-none"
+              style={{ width: 38, height: 38 }}
+            >
+              {icon}
+            </div>
+
+            {/* Título — Playfair Display, ciruela */}
             <h3
-              className="font-semibold text-white mb-2 leading-snug"
-              style={{ fontSize: '1.1rem', letterSpacing: '0.03em' }}
+              className="plat-card-title mb-2.5 leading-snug flex-none"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '1.1rem',
+                fontWeight: 600,
+              }}
             >
               {title}
             </h3>
-            <p className="text-white/72 text-sm mb-4 leading-relaxed line-clamp-2">
+
+            {/* Descripción — Open Sans, mauve medio */}
+            <p
+              className="flex-1 leading-relaxed line-clamp-3"
+              style={{
+                fontFamily: "'Open Sans', sans-serif",
+                fontSize: '0.82rem',
+                color: `${P}99`,
+                lineHeight: 1.72,
+              }}
+            >
               {description}
             </p>
+
+            {/* CTA row */}
             <div
-              className="flex items-center text-sm font-medium transition-all duration-300 group-hover:gap-2"
-              style={{ color: '#E0B0B0', gap: '0.35rem', letterSpacing: '0.04em' }}
+              className="flex items-center gap-2 pt-4 mt-2 flex-none"
+              style={{ borderTop: `1px solid ${ML}80` }}
             >
-              Ver detalles
+              <span
+                className="transition-all duration-300 ease-out group-hover:tracking-widest"
+                style={{
+                  fontFamily: "'Open Sans', sans-serif",
+                  fontSize: '0.68rem',
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  fontWeight: 600,
+                  color: M,
+                }}
+              >
+                Descubrir
+              </span>
               <ArrowRight
-                size={14}
-                className="transition-transform duration-300 group-hover:translate-x-1"
+                size={11}
+                className="transition-transform duration-300 ease-out group-hover:translate-x-2 flex-shrink-0"
+                style={{ color: P }}
               />
             </div>
+
           </div>
         </div>
       </Link>

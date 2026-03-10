@@ -2,64 +2,132 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 /**
- * LoadingScreen — "La Matriz & La Flor"
+ * LoadingScreen — "La Matriz y el Loto"
  *
- * Secuencia de animación:
- *   0.00s → 1.90s  · Silueta del útero se dibuja (pathLength)
- *   1.55s → 2.25s  · Trompas de Falopio se trazan simultáneamente
- *   2.20s → 2.65s  · Fimbrias aparecen (filamentos delicados)
- *   1.85s          · Detalle del orificio cervical externo
- *   2.30s → 3.10s  · Flor florece desde el centro de la matriz (spring)
- *   2.70s          · Nombre y especialidad aparecen
- *   3.50s          · Pantalla desaparece → onComplete()
+ * SVG trazado sobre el logo oficial (favicon.png / logo-dra-leslie.png).
+ * Paleta del logo: #6e506f (ciruela) · #d09bad (mauve) · #e9c3d2 (claro)
  *
- * Props:
- *   onComplete {function} — Se llama cuando el exit animation termina
- *   logoSrc    {string}   — (Opcional) Ruta a tu imagen, ej: "/logo-leslie.png"
- *                           Si se provee, reemplaza la flor SVG con la imagen.
+ * Anatomía representada (fiel al logo .ai):
+ *   · Útero + cérvix/vagina  — cuerpo estilizado en forma de V con canal cervical
+ *   · Trompas de Falopio     — scroll en S elegante, terminan en ovarios
+ *   · Loto de 5 pétalos      — emerge del fundus hacia arriba:
+ *                              1 pétalo central (alto) · 2 internos · 2 alas externas
+ *
+ * Secuencia animada:
+ *   0.0 s → 2.1 s   Útero + cérvix se trazan (pathLength)
+ *   1.8 s → 2.6 s   Trompas se extienden simultáneamente
+ *   2.5 s → 2.8 s   Ovarios aparecen (spring)
+ *   2.3 s → 3.1 s   Pétalos del loto florecen (stagger spring, centro→alas)
+ *   3.1 s           Nombre y especialidad aparecen
+ *   4.2 s           Pantalla se desvanece
  */
 
-const VISIBLE_MS  = 3500;
-const EXIT_MS     = 650;
-const PETAL_ANGLES = [0, 60, 120, 180, 240, 300];
+const VISIBLE_MS = 4200;
+const EXIT_MS    = 700;
 
-/* ─── Constantes de color ─────────────────────────── */
-const ROSE_GOLD = '#E0B0B0';
-const DEEP_ROSE = '#C9857B';
-const SOFT_PINK = '#FFB6D9';
+/* ── Paleta exacta del logo ── */
+const P  = '#6e506f';   /* ciruela  — contornos, detalles */
+const M  = '#d09bad';   /* mauve    — rellenos principales */
+const ML = '#e9c3d2';   /* claro    — pétalos laterales, cavidad */
 
-/* ─── Coordenadas de la composición (viewBox 0 0 200 180) ──
-   Útero: fundus arriba (y≈53), cuello abajo (y≈150)
-   Astas: esquina izquierda (63, 68) y derecha (137, 68)
-   Flor:  centro del cuerpo uterino (100, 78)
-   ─────────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   GEOMETRÍA SVG  —  viewBox "0 0 200 205"
 
-/**
- * Path del útero — trazo continuo, sentido antihorario.
- *
- * Proporciones inspiradas en anatomía real:
- *   · Fondo (fundus) más ancho en la parte superior (~74px)
- *   · Istmo notablemente estrecho (~20px) — constrición anatómica
- *   · Cuello (cérvix) cilíndrico, estrecho (~14px)
- *   · Orificio externo como punto único al final
- */
+   Coordenadas clave:
+     Loto base (fundus):   (100, 110)
+     Útero más ancho:       x 73–127  y ≈ 118
+     Cérvix tip:           (100, 174)
+     Ovario derecho:       (158, 127)
+     Ovario izquierdo:     (42,  127)
+   ════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────
+   ÚTERO COMPLETO + CÉRVIX
+   Trazado horario desde la punta del cérvix hacia arriba,
+   cruza el fundus y baja por el otro lado cerrando el path.
+   La forma superior se abre en dos astas que dan lugar a
+   las trompas; la inferior se estrecha en el canal cervical.
+   ────────────────────────────────────────────────────────── */
 const UTERUS_PATH = `
-  M 100 150
-  C 103 146, 106 141, 107 136
-  C 109 129, 110 121, 110 115
-  C 112 108, 120 100, 128 91
-  C 134 83, 138 75, 137 68
-  C 136 61, 128 56, 117 55
-  C 109 54, 104 53, 100 53
-  C 96  53, 91  54, 83  55
-  C 72  56, 64  61, 63  68
-  C 62  75, 66  83, 72  91
-  C 80 100, 88 108, 90 115
-  C 90 121, 91 129, 93 136
-  C 94 141, 97 146, 100 150 Z
+  M 100 173
+  C 97 164, 95.5 155, 97.5 149
+  C 99 144.5, 96 140.5, 89.5 136.5
+  C 83 132.5, 74.5 124.5, 73 115.5
+  C 71.5 107, 76.5 101, 84 99.5
+  C 90.5 98.5, 96 102.5, 98.5 107.5
+  C 99.5 110.5, 99.8 114, 100 115.5
+  C 100.2 114, 100.5 110.5, 101.5 107.5
+  C 104 102.5, 109.5 98.5, 116 99.5
+  C 123.5 101, 128.5 107, 127 115.5
+  C 125.5 124.5, 117 132.5, 110.5 136.5
+  C 104 140.5, 101 144.5, 102.5 149
+  C 104.5 155, 103 164, 100 173 Z
 `;
 
-const LoadingScreen = ({ onComplete, logoSrc }) => {
+/* ──────────────────────────────────────────────────────────
+   CAVIDAD UTERINA INTERIOR
+   Forma de almendra que representa el espacio interno del útero.
+   Se rellena con el tono más claro dando profundidad al ícono.
+   ────────────────────────────────────────────────────────── */
+const CAVITY_PATH = `
+  M 100 148
+  C 95 143, 89 136, 89 126
+  C 89 117, 94 113.5, 100 113.5
+  C 106 113.5, 111 117, 111 126
+  C 111 136, 105 143, 100 148 Z
+`;
+
+/* ──────────────────────────────────────────────────────────
+   TROMPAS DE FALOPIO
+   Salen de los astas/lados del útero, curvan hacia arriba-afuera,
+   hacen un scroll en S (como en el logo) y terminan en los ovarios.
+   ────────────────────────────────────────────────────────── */
+const TUBE_RIGHT = `M 118 115 C 135 103, 154 99, 164 107 C 171 113, 171 123, 166 128 C 162 132, 156 132, 154 127`;
+const TUBE_LEFT  = `M 82  115 C 65  103, 46  99, 36  107 C 29  113, 29  123, 34  128 C 38  132, 44  132, 46  127`;
+
+/* ──────────────────────────────────────────────────────────
+   LOTO DE 5 PÉTALOS
+   Todos parten del fundus (100, 110).
+
+   Disposición (fiel al logo):
+     ①  Centro       — el más alto y estrecho, apunta recto arriba
+     ②③ Internos     — par simétrico ~28° hacia cada lado
+     ④⑤ Alas         — par ancho casi horizontal, como alas extendidas
+   ────────────────────────────────────────────────────────── */
+
+/* ① Pétalo central — más alto, vientre más ancho */
+const PETAL_C  = `M 100 110 C 84 95, 81 66, 100 45 C 119 66, 116 95, 100 110 Z`;
+const VEIN_C   = `M 100 110 L 100 45`;
+
+/* ② Pétalo interno izquierdo — más grueso */
+const PETAL_IL = `M 100 110 C 87 98, 73 76, 71 55 C 84 63, 97 88, 100 110 Z`;
+const VEIN_IL  = `M 100 110 L 71 55`;
+
+/* ③ Pétalo interno derecho (espejo) */
+const PETAL_IR = `M 100 110 C 113 98, 127 76, 129 55 C 116 63, 103 88, 100 110 Z`;
+const VEIN_IR  = `M 100 110 L 129 55`;
+
+/* ④ Ala izquierda — ancha, más gruesa verticalmente */
+const PETAL_OL = `M 100 110 C 83 115, 59 114, 41 107 C 54 91, 79 101, 100 110 Z`;
+const VEIN_OL  = `M 100 110 L 44 97`;
+
+/* ⑤ Ala derecha (espejo) */
+const PETAL_OR = `M 100 110 C 117 115, 141 114, 159 107 C 146 91, 121 101, 100 110 Z`;
+const VEIN_OR  = `M 100 110 L 156 97`;
+
+/* Config de cada pétalo para el stagger */
+const PETALS = [
+  { path: PETAL_C,  vein: VEIN_C,  fill: M,  delay: 2.28 },  /* centro primero */
+  { path: PETAL_IL, vein: VEIN_IL, fill: M,  delay: 2.38 },
+  { path: PETAL_IR, vein: VEIN_IR, fill: M,  delay: 2.38 },
+  { path: PETAL_OL, vein: VEIN_OL, fill: ML, delay: 2.48 },  /* alas al final */
+  { path: PETAL_OR, vein: VEIN_OR, fill: ML, delay: 2.48 },
+];
+
+/* ════════════════════════════════════════════════════════════
+   COMPONENTE
+   ════════════════════════════════════════════════════════════ */
+const LoadingScreen = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -88,282 +156,226 @@ const LoadingScreen = ({ onComplete, logoSrc }) => {
             alignItems: 'center',
             justifyContent: 'center',
             fontFamily: 'DM Sans, sans-serif',
-            /* Fondo blanco seda con gradiente radial muy sutil */
-            background:
-              'radial-gradient(ellipse at 50% 42%, #FFF5F8 0%, #FEFAFA 60%, #FAF0F2 100%)',
+            background: 'radial-gradient(ellipse at 50% 44%, #faf0f5 0%, #FEFAFA 58%, #f5ebf2 100%)',
           }}
         >
 
-          {/* ══════════════════════════════════════════════════════
-              SVG — Coordinate space: 200 × 180 (user units)
-              Rendered at: 230 × 207 px
-              ══════════════════════════════════════════════════════ */}
+          {/* ══════════════════════════════════════════════════
+              SVG PRINCIPAL — 230 × 236 px   viewBox 0 0 200 205
+              ══════════════════════════════════════════════════ */}
           <svg
             width="230"
-            height="207"
-            viewBox="0 0 200 180"
+            height="236"
+            viewBox="0 0 200 205"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
             <defs>
-              {/* Gradiente para los pétalos: punta más oscura, base más clara */}
-              <linearGradient id="petalGrad" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0%"   stopColor={ROSE_GOLD} stopOpacity="0.85" />
-                <stop offset="100%" stopColor={SOFT_PINK} stopOpacity="0.95" />
+              {/* Relleno del cuerpo uterino */}
+              <linearGradient id="ls-body" x1="100" y1="110" x2="100" y2="174" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stopColor={M}  stopOpacity="0.22" />
+                <stop offset="100%" stopColor={P}  stopOpacity="0.08" />
               </linearGradient>
 
-              {/* Relleno interior del útero — solo una insinuación de color */}
-              <linearGradient id="uterusBodyFill" x1="0.5" y1="0" x2="0.5" y2="1">
-                <stop offset="0%"   stopColor={SOFT_PINK} stopOpacity="0.09" />
-                <stop offset="100%" stopColor={ROSE_GOLD} stopOpacity="0.03" />
+              {/* Relleno cavidad interior */}
+              <linearGradient id="ls-cavity" x1="100" y1="111" x2="100" y2="148" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stopColor={ML} stopOpacity="0.55" />
+                <stop offset="100%" stopColor={M}  stopOpacity="0.20" />
               </linearGradient>
 
-              {/* Halo radial detrás de la flor */}
-              <radialGradient id="flowerHalo" cx="50%" cy="50%" r="50%">
-                <stop offset="0%"   stopColor={SOFT_PINK} stopOpacity="0.40" />
-                <stop offset="100%" stopColor={SOFT_PINK} stopOpacity="0" />
+              {/* Halo detrás del loto */}
+              <radialGradient id="ls-halo" cx="50%" cy="54%" r="38%">
+                <stop offset="0%"   stopColor={ML} stopOpacity="0.35" />
+                <stop offset="100%" stopColor={ML} stopOpacity="0"    />
               </radialGradient>
             </defs>
 
-            {/* ── Anillo guía exterior (muy sutil) ── */}
-            <circle
-              cx="100"
-              cy="102"
-              r="75"
-              stroke={SOFT_PINK}
-              strokeWidth="0.35"
-              strokeDasharray="2 7"
-              opacity="0.22"
-            />
-
-            {/* ────────────────────────────────────────────────────
-                ÚTERO — La Matriz
-                Path único y continuo para un trazo fluido y elegante.
-                Se dibuja de abajo (orificio externo) hacia arriba
-                por el lado derecho, cruza el fundus, baja por la
-                izquierda y cierra en el punto de inicio.
-                ──────────────────────────────────────────────────── */}
-            <motion.path
-              d={UTERUS_PATH}
-              stroke={ROSE_GOLD}
-              strokeWidth="1.7"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="url(#uterusBodyFill)"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{
-                pathLength: {
-                  duration: 1.9,
-                  ease: [0.37, 0, 0.63, 1], // curva suave, acelera al inicio y final
-                },
-                opacity: { duration: 0.2 },
-              }}
-            />
-
-            {/* ── Detalle del orificio cervical externo ──
-                Pequeña "U" que sugiere la entrada del cuello uterino */}
-            <motion.path
-              d="M 96.5 147 C 97.5 143, 100 141.5, 100 141.5 C 100 141.5, 102.5 143, 103.5 147"
-              stroke={SOFT_PINK}
-              strokeWidth="1.0"
-              strokeLinecap="round"
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.75 }}
-              transition={{
-                pathLength: { duration: 0.40, delay: 1.85, ease: 'easeOut' },
-                opacity:    { duration: 0.15, delay: 1.85 },
-              }}
-            />
-
-            {/* ────────────────────────────────────────────────────
-                TROMPA IZQUIERDA — desde el asta izquierda (63, 68)
-                ──────────────────────────────────────────────────── */}
-            <motion.path
-              d="M 63 68 C 54 66, 44 64, 36 58 C 31 54, 27 52, 24 51"
-              stroke={ROSE_GOLD}
-              strokeWidth="1.55"
-              strokeLinecap="round"
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{
-                pathLength: { duration: 0.72, delay: 1.55, ease: 'easeOut' },
-                opacity:    { duration: 0.20, delay: 1.55 },
-              }}
-            />
-
-            {/* Fimbrias izquierdas — 3 filamentos delicados */}
-            <motion.path
-              d="M 24 51 C 21 49, 20 47, 22 46
-                 M 24 51 C 22 53, 20 53, 19 52
-                 M 24 51 C 23 55, 21 56, 20 55"
-              stroke={SOFT_PINK}
-              strokeWidth="1.1"
-              strokeLinecap="round"
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.85 }}
-              transition={{
-                pathLength: { duration: 0.42, delay: 2.22, ease: 'easeOut' },
-                opacity:    { duration: 0.18, delay: 2.22 },
-              }}
-            />
-
-            {/* ────────────────────────────────────────────────────
-                TROMPA DERECHA — desde el asta derecha (137, 68)
-                ──────────────────────────────────────────────────── */}
-            <motion.path
-              d="M 137 68 C 146 66, 156 64, 164 58 C 169 54, 173 52, 176 51"
-              stroke={ROSE_GOLD}
-              strokeWidth="1.55"
-              strokeLinecap="round"
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{
-                pathLength: { duration: 0.72, delay: 1.55, ease: 'easeOut' },
-                opacity:    { duration: 0.20, delay: 1.55 },
-              }}
-            />
-
-            {/* Fimbrias derechas */}
-            <motion.path
-              d="M 176 51 C 179 49, 180 47, 178 46
-                 M 176 51 C 178 53, 180 53, 181 52
-                 M 176 51 C 177 55, 179 56, 180 55"
-              stroke={SOFT_PINK}
-              strokeWidth="1.1"
-              strokeLinecap="round"
-              fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.85 }}
-              transition={{
-                pathLength: { duration: 0.42, delay: 2.22, ease: 'easeOut' },
-                opacity:    { duration: 0.18, delay: 2.22 },
-              }}
-            />
-
-            {/* ══════════════════════════════════════════════════════
-                LA FLOR — florece desde el centro de la matriz (100, 78)
-
-                Si tienes el logo como imagen, sustituye todo el bloque
-                <motion.g> por este <motion.image>:
-
-                  <motion.image
-                    href="/logo-leslie.png"
-                    x="74" y="52" width="52" height="52"
-                    preserveAspectRatio="xMidYMid meet"
-                    initial={{ opacity: 0, scale: 0.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{
-                      scale:   { duration: 0.85, delay: 2.3, ease: [0.34, 1.56, 0.64, 1] },
-                      opacity: { duration: 0.30, delay: 2.3 },
-                    }}
-                    style={{ transformOrigin: '100px 78px' }}
-                  />
-                ══════════════════════════════════════════════════════ */}
-
-            {/* Halo de luz detrás de la flor */}
+            {/* ── Halo suave detrás del loto ── */}
             <motion.ellipse
-              cx="100" cy="78" rx="24" ry="24"
-              fill="url(#flowerHalo)"
+              cx="100" cy="110" rx="50" ry="48"
+              fill="url(#ls-halo)"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.65, delay: 2.28 }}
-              style={{ transformOrigin: '100px 78px' }}
+              transition={{ duration: 0.8, delay: 2.22 }}
+              style={{ transformOrigin: '100px 110px' }}
             />
 
-            {/* Grupo de la flor — escala con spring desde el centro */}
-            {!logoSrc && (
+            {/* ────────────────────────────────────────────────
+                LOTO — bloom desde el fundus (100, 110)
+                Pétalos en stagger: centro → internos → alas
+                ──────────────────────────────────────────────── */}
+            {PETALS.map((p, i) => (
               <motion.g
-                initial={{ scale: 0.04, opacity: 0 }}
-                animate={{ scale: 1,    opacity: 1 }}
+                key={`petal-${i}`}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{
-                  scale:   { duration: 0.82, delay: 2.30, ease: [0.34, 1.56, 0.64, 1] },
-                  opacity: { duration: 0.28, delay: 2.30 },
+                  scale:   { duration: 0.62, delay: p.delay, ease: [0.34, 1.56, 0.64, 1] },
+                  opacity: { duration: 0.22, delay: p.delay },
                 }}
-                style={{ transformOrigin: '100px 78px' }}
+                style={{ transformOrigin: '100px 110px' }}
               >
-                {/*
-                  6 pétalos — forma de pétalo apuntando hacia arriba:
-                  M 100 78  → parte desde el centro
-                  curva a la izquierda subiendo hasta (100, 63)
-                  curva a la derecha volviendo al centro
-                  Cada pétalo rota alrededor del centro (100, 78)
-                */}
-                {PETAL_ANGLES.map((angle, i) => (
-                  <motion.path
-                    key={i}
-                    d="M 100 78 C 96.5 72, 95.5 65, 100 60 C 104.5 65, 103.5 72, 100 78 Z"
-                    fill={i % 2 === 0 ? SOFT_PINK : ROSE_GOLD}
-                    transform={`rotate(${angle}, 100, 78)`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: i % 2 === 0 ? 0.90 : 0.75 }}
-                    transition={{ delay: 2.30 + i * 0.065, duration: 0.32 }}
-                  />
-                ))}
-
-                {/* Estambres — 6 puntos en anillo interior */}
-                {PETAL_ANGLES.map((angle, i) => (
-                  <motion.circle
-                    key={`s${i}`}
-                    cx={100 + Math.sin((angle * Math.PI) / 180) * 7.8}
-                    cy={78  - Math.cos((angle * Math.PI) / 180) * 7.8}
-                    r="1.3"
-                    fill={ROSE_GOLD}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.88 }}
-                    transition={{ delay: 2.60 + i * 0.04, duration: 0.25 }}
-                  />
-                ))}
-
-                {/* Disco central */}
-                <circle cx="100" cy="78" r="5.8" fill={DEEP_ROSE} opacity="0.95" />
-                <circle cx="100" cy="78" r="3.2" fill="white"     opacity="0.72" />
+                {/* Relleno del pétalo */}
+                <path
+                  d={p.path}
+                  fill={p.fill}
+                  fillOpacity="0.82"
+                  stroke={P}
+                  strokeWidth="1.5"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                />
+                {/* Vena interior del pétalo */}
+                <path
+                  d={p.vein}
+                  stroke={P}
+                  strokeWidth="0.6"
+                  strokeLinecap="round"
+                  opacity="0.30"
+                />
               </motion.g>
-            )}
+            ))}
 
-            {/* Flor con imagen personalizada (logoSrc) */}
-            {logoSrc && (
-              <motion.image
-                href={logoSrc}
-                x="74" y="52" width="52" height="52"
-                preserveAspectRatio="xMidYMid meet"
-                initial={{ opacity: 0, scale: 0.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  scale:   { duration: 0.85, delay: 2.3, ease: [0.34, 1.56, 0.64, 1] },
-                  opacity: { duration: 0.30, delay: 2.3 },
-                }}
-                style={{ transformOrigin: '100px 78px' }}
-              />
-            )}
+            {/* ────────────────────────────────────────────────
+                ÚTERO + CÉRVIX — trazo pathLength
+                ──────────────────────────────────────────────── */}
+
+            {/* Relleno del cuerpo — fade-in tras el trazo */}
+            <motion.path
+              d={UTERUS_PATH}
+              fill="url(#ls-body)"
+              stroke="none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.6 }}
+            />
+
+            {/* Contorno animado */}
+            <motion.path
+              d={UTERUS_PATH}
+              stroke={P}
+              strokeWidth="2.1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{
+                pathLength: { duration: 2.1, ease: [0.37, 0, 0.63, 1] },
+                opacity:    { duration: 0.15 },
+              }}
+            />
+
+            {/* Cavidad uterina interior */}
+            <motion.path
+              d={CAVITY_PATH}
+              fill="url(#ls-cavity)"
+              stroke={P}
+              strokeWidth="0.8"
+              strokeOpacity="0.35"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                opacity: { duration: 0.45, delay: 1.85 },
+                scale:   { duration: 0.45, delay: 1.85, ease: 'easeOut' },
+              }}
+              style={{ transformOrigin: '100px 129px' }}
+            />
+
+            {/* ────────────────────────────────────────────────
+                TROMPA DERECHA + OVARIO
+                ──────────────────────────────────────────────── */}
+            <motion.path
+              d={TUBE_RIGHT}
+              stroke={P}
+              strokeWidth="1.85"
+              strokeLinecap="round"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{
+                pathLength: { duration: 0.78, delay: 1.80, ease: 'easeOut' },
+                opacity:    { duration: 0.18, delay: 1.80 },
+              }}
+            />
+            <motion.circle
+              cx="158" cy="127" r="5.5"
+              fill={P}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{
+                scale:   { duration: 0.38, delay: 2.55, ease: [0.34, 1.56, 0.64, 1] },
+                opacity: { duration: 0.18, delay: 2.55 },
+              }}
+              style={{ transformOrigin: '158px 127px' }}
+            />
+
+            {/* ────────────────────────────────────────────────
+                TROMPA IZQUIERDA + OVARIO
+                ──────────────────────────────────────────────── */}
+            <motion.path
+              d={TUBE_LEFT}
+              stroke={P}
+              strokeWidth="1.85"
+              strokeLinecap="round"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{
+                pathLength: { duration: 0.78, delay: 1.80, ease: 'easeOut' },
+                opacity:    { duration: 0.18, delay: 1.80 },
+              }}
+            />
+            <motion.circle
+              cx="42" cy="127" r="5.5"
+              fill={P}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{
+                scale:   { duration: 0.38, delay: 2.55, ease: [0.34, 1.56, 0.64, 1] },
+                opacity: { duration: 0.18, delay: 2.55 },
+              }}
+              style={{ transformOrigin: '42px 127px' }}
+            />
+
+            {/* ── Disco central del loto (corazón del ícono) ── */}
+            <motion.g
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{
+                scale:   { duration: 0.42, delay: 3.05, ease: [0.34, 1.56, 0.64, 1] },
+                opacity: { duration: 0.20, delay: 3.05 },
+              }}
+              style={{ transformOrigin: '100px 110px' }}
+            >
+              <circle cx="100" cy="110" r="7"   fill={P}      opacity="0.96" />
+              <circle cx="100" cy="110" r="3.6" fill="white"  opacity="0.70" />
+            </motion.g>
+
           </svg>
 
           {/* ── Nombre y especialidad ── */}
           <motion.div
             className="text-center"
-            style={{ marginTop: '4px' }}
-            initial={{ opacity: 0, y: 8 }}
+            style={{ marginTop: '0px' }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.70, duration: 0.70 }}
+            transition={{ delay: 3.10, duration: 0.72 }}
           >
             <p style={{
-              color: DEEP_ROSE,
-              letterSpacing: '0.32em',
-              fontSize: '9.5px',
+              color: P,
+              letterSpacing: '0.30em',
+              fontSize: '9px',
               textTransform: 'uppercase',
-              fontWeight: '500',
+              fontWeight: '600',
               fontFamily: 'DM Sans, sans-serif',
             }}>
               Dra. Leslie Alejandra
             </p>
             <p style={{
-              color: ROSE_GOLD,
-              letterSpacing: '0.18em',
+              color: M,
+              letterSpacing: '0.16em',
               fontSize: '8.5px',
               marginTop: '5px',
               fontFamily: 'DM Sans, sans-serif',
@@ -374,10 +386,10 @@ const LoadingScreen = ({ onComplete, logoSrc }) => {
 
           {/* ── Barra de progreso ── */}
           <div style={{
-            width: '96px',
+            width: '88px',
             height: '1px',
-            backgroundColor: `${ROSE_GOLD}28`,
-            marginTop: '20px',
+            backgroundColor: `${M}30`,
+            marginTop: '18px',
             position: 'relative',
             borderRadius: '1px',
           }}>
@@ -385,13 +397,13 @@ const LoadingScreen = ({ onComplete, logoSrc }) => {
               style={{
                 position: 'absolute',
                 inset: 0,
-                backgroundColor: ROSE_GOLD,
+                background: `linear-gradient(90deg, ${ML}, ${M}, ${P})`,
                 borderRadius: '1px',
                 originX: 0,
               }}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 3.0, delay: 0.35, ease: 'easeInOut' }}
+              transition={{ duration: 3.8, delay: 0.25, ease: 'easeInOut' }}
             />
           </div>
 

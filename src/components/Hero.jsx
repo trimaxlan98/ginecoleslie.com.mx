@@ -54,7 +54,7 @@ const Hero = () => {
     <section
       id="inicio"
       className="relative min-h-screen flex items-center overflow-hidden pt-20"
-      style={{ background: 'linear-gradient(145deg, #FEFAFA 0%, #FFF5F8 45%, #FAF0F2 100%)' }}
+      style={{ background: 'linear-gradient(145deg, #FEFAFA 0%, #FAF0F5 45%, #F5EBF2 100%)' }}
     >
       {/* ── Organic animated background blobs ── */}
       <motion.div
@@ -68,7 +68,7 @@ const Hero = () => {
         transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute -top-[12%] -right-[6%] w-[520px] h-[520px] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at 40% 40%, #FFB6D9 0%, #FFE0F0 50%, transparent 78%)',
+          background: 'radial-gradient(ellipse at 40% 40%, #D09BAD 0%, #FFE0F0 50%, transparent 78%)',
           filter: 'blur(52px)',
           opacity: 0.42,
         }}
@@ -84,7 +84,7 @@ const Hero = () => {
         transition={{ duration: 13, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         className="absolute -bottom-[12%] -left-[6%] w-[420px] h-[420px] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at 60% 60%, #FFC9E3 0%, #FFE8F2 55%, transparent 78%)',
+          background: 'radial-gradient(ellipse at 60% 60%, #E9C3D2 0%, #FFE8F2 55%, transparent 78%)',
           filter: 'blur(46px)',
           opacity: 0.34,
         }}
@@ -115,7 +115,7 @@ const Hero = () => {
             cx={c.x}
             cy={c.y}
             r={FOL_R}
-            stroke="#C9857B"
+            stroke="#6E506F"
             strokeWidth="1"
             fill="none"
           />
@@ -140,11 +140,11 @@ const Hero = () => {
             >
               <div
                 className="h-px w-10"
-                style={{ background: 'linear-gradient(to right, transparent, #E0B0B0)' }}
+                style={{ background: 'linear-gradient(to right, transparent, #D09BAD)' }}
               />
               <span
                 style={{
-                  color: '#C9857B',
+                  color: '#6E506F',
                   letterSpacing: '0.22em',
                   fontSize: '11px',
                   textTransform: 'uppercase',
@@ -155,7 +155,7 @@ const Hero = () => {
               </span>
               <div
                 className="h-px w-10 lg:hidden"
-                style={{ background: 'linear-gradient(to left, transparent, #E0B0B0)' }}
+                style={{ background: 'linear-gradient(to left, transparent, #D09BAD)' }}
               />
             </motion.div>
 
@@ -167,7 +167,7 @@ const Hero = () => {
             >
               Dra. Leslie Alejandra
               <br />
-              <span style={{ color: '#C9857B' }}>Ordaz Huerta</span>
+              <span style={{ color: '#6E506F' }}>Ordaz Huerta</span>
             </motion.h1>
 
             {/* Organic divider */}
@@ -185,10 +185,10 @@ const Hero = () => {
                 />
                 <defs>
                   <linearGradient id="dividerGrad" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="#FFB6D9" stopOpacity="0" />
-                    <stop offset="30%" stopColor="#E0B0B0" stopOpacity="1" />
-                    <stop offset="70%" stopColor="#FFB6D9" stopOpacity="0.8" />
-                    <stop offset="100%" stopColor="#FFB6D9" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#D09BAD" stopOpacity="0" />
+                    <stop offset="30%" stopColor="#D09BAD" stopOpacity="1" />
+                    <stop offset="70%" stopColor="#D09BAD" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#D09BAD" stopOpacity="0" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -211,7 +211,7 @@ const Hero = () => {
             >
               Atención médica integral y especializada para la mujer, con formación en la
               Universidad Veracruzana y amplia experiencia clínica.{' '}
-              <em style={{ color: '#C9857B', fontStyle: 'normal' }}>Tu salud en manos expertas.</em>
+              <em style={{ color: '#6E506F', fontStyle: 'normal' }}>Tu salud en manos expertas.</em>
             </motion.p>
 
             {/* CTA button */}
@@ -226,8 +226,8 @@ const Hero = () => {
                 transition={{ type: 'spring', stiffness: 380, damping: 12 }}
                 className="btn-bloom w-full sm:w-auto flex items-center justify-center gap-3 px-9 py-4 text-white font-medium rounded-full text-base"
                 style={{
-                  background: 'linear-gradient(135deg, #E0B0B0 0%, #C9857B 60%, #d4706a 100%)',
-                  boxShadow: '0 6px 28px rgba(201, 133, 123, 0.38)',
+                  background: 'linear-gradient(135deg, #D09BAD 0%, #6E506F 60%, #5A3D6B 100%)',
+                  boxShadow: '0 6px 28px rgba(110, 80, 111, 0.38)',
                   letterSpacing: '0.04em',
                 }}
               >
@@ -238,7 +238,7 @@ const Hero = () => {
               <a
                 href="/#sobre"
                 className="text-sm font-medium transition-colors"
-                style={{ color: '#C9857B', letterSpacing: '0.06em' }}
+                style={{ color: '#6E506F', letterSpacing: '0.06em' }}
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById('sobre')?.scrollIntoView({ behavior: 'smooth' });
@@ -260,7 +260,7 @@ const Hero = () => {
             <div
               className="absolute inset-0 -z-10"
               style={{
-                background: 'radial-gradient(ellipse at 50% 55%, #FFB6D9, transparent 68%)',
+                background: 'radial-gradient(ellipse at 50% 55%, #D09BAD, transparent 68%)',
                 filter: 'blur(32px)',
                 opacity: 0.55,
                 transform: 'translate(16px, 16px) scale(1.05)',
@@ -289,7 +289,7 @@ const Hero = () => {
                 className="absolute inset-0 z-10 pointer-events-none"
                 style={{
                   background:
-                    'linear-gradient(180deg, transparent 55%, rgba(201,133,123,0.22) 100%)',
+                    'linear-gradient(180deg, transparent 55%, rgba(110,80,111,0.22) 100%)',
                 }}
               />
               <img
@@ -308,12 +308,12 @@ const Hero = () => {
               className="absolute -bottom-5 -left-4 z-20 flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-2xl border"
               style={{
                 borderColor: 'rgba(224,176,176,0.4)',
-                boxShadow: '0 8px 24px rgba(201,133,123,0.18)',
+                boxShadow: '0 8px 24px rgba(110,80,111,0.18)',
               }}
             >
               <div
                 className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm flex-shrink-0"
-                style={{ background: 'linear-gradient(135deg, #E0B0B0, #C9857B)' }}
+                style={{ background: 'linear-gradient(135deg, #D09BAD, #6E506F)' }}
               >
                 10+
               </div>
@@ -331,7 +331,7 @@ const Hero = () => {
               transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -top-4 -right-4 w-14 h-14 pointer-events-none"
               style={{
-                background: 'radial-gradient(ellipse, #FFB6D9, #FFC9E3)',
+                background: 'radial-gradient(ellipse, #D09BAD, #E9C3D2)',
                 borderRadius: '62% 38% 55% 45% / 50% 62% 38% 50%',
                 opacity: 0.7,
               }}

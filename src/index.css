@@ -6,14 +6,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Design Tokens ── */
+/* ── Design Tokens — Logo Brand Palette ── */
 :root {
-  --rose-gold: #E0B0B0;
-  --soft-pink: #FFB6D9;
+  /* ── Logo Brand ── */
+  --brand-purple:  #6E506F;   /* Logo ciruela — color primario */
+  --brand-mauve:   #D09BAD;   /* Logo mauve rosa — secundario  */
+  --brand-light:   #E9C3D2;   /* Mauve claro — acentos suaves  */
+  --brand-pale:    #F5EBF2;   /* Casi blanco mauve — fondos    */
+
+  /* ── Aliases (compatibilidad) ── */
+  --rose-gold:  #D09BAD;      /* was #E0B0B0 */
+  --soft-pink:  #E9C3D2;      /* was #FFB6D9 */
+  --deep-rose:  #6E506F;      /* was #C9857B */
+  --pearl:      #F5EAEF;      /* was #FAF0F0 */
+  --blush:      #F5EBF2;      /* was #FFF0F5 */
   --silk-white: #FEFAFA;
-  --deep-rose: #C9857B;
-  --pearl: #FAF0F0;
-  --blush: #FFF0F5;
+
+  /* ── Platinado/vibrant (secciones oscuras) ── */
+  --orchid:     #AF69EE;
+  --rose-plat:  #FF69B4;
 }
 
 /* ── Base ── */
@@ -42,18 +53,18 @@ h3 {
 @keyframes bloom-pulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(224, 176, 176, 0.55),
-                0 4px 24px rgba(201, 133, 123, 0.2);
+    box-shadow: 0 0 0 0 rgba(209, 155, 173, 0.55),
+                0 4px 24px rgba(110, 80, 111, 0.2);
   }
   45% {
     transform: scale(1.055);
-    box-shadow: 0 0 0 14px rgba(224, 176, 176, 0),
-                0 8px 32px rgba(201, 133, 123, 0.3);
+    box-shadow: 0 0 0 14px rgba(209, 155, 173, 0),
+                0 8px 32px rgba(110, 80, 111, 0.3);
   }
   100% {
     transform: scale(1.04);
-    box-shadow: 0 0 0 0 rgba(224, 176, 176, 0),
-                0 6px 28px rgba(201, 133, 123, 0.25);
+    box-shadow: 0 0 0 0 rgba(209, 155, 173, 0),
+                0 6px 28px rgba(110, 80, 111, 0.25);
   }
 }
 
@@ -79,16 +90,16 @@ h3 {
   -webkit-backdrop-filter: blur(16px) saturate(1.4) !important;
   border: 1px solid rgba(255, 255, 255, 0.88) !important;
   box-shadow:
-    0 8px 32px rgba(224, 176, 176, 0.18),
-    0 2px 8px rgba(201, 133, 123, 0.06),
+    0 8px 32px rgba(209, 155, 173, 0.18),
+    0 2px 8px rgba(110, 80, 111, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
   transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
 }
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.74) !important;
   box-shadow:
-    0 16px 48px rgba(224, 176, 176, 0.26),
-    0 4px 12px rgba(201, 133, 123, 0.10),
+    0 16px 48px rgba(209, 155, 173, 0.26),
+    0 4px 12px rgba(110, 80, 111, 0.10),
     inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
   transform: translateY(-2px);
 }
@@ -124,4 +135,117 @@ h3 {
   height: 80px;
   background: linear-gradient(to top, #FEFAFA, transparent);
   pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PLATINUM METALLIC SYSTEM — Services v2
+   "Orquídea Platinada" — dark luxury, vibrant metal chrome
+   ═══════════════════════════════════════════════════════════ */
+
+/* chrome-card-wrap reemplazado por .brand-card — ver abajo */
+
+/* ── Animated heading sweep — paleta de marca ── */
+.plat-text-sweep {
+  background: linear-gradient(
+    90deg,
+    #6e506f 0%,
+    #8a6882 18%,
+    #d09bad 38%,
+    #e9c3d2 52%,
+    #d09bad 66%,
+    #8a6882 82%,
+    #6e506f 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: plat-sweep 6s linear infinite;
+}
+@keyframes plat-sweep {
+  from { background-position: 200% center; }
+  to   { background-position:   0% center; }
+}
+
+/* ── Card title — color marca, se ilumina en hover ── */
+.plat-card-title {
+  color: #6e506f;
+  transition: color 0.35s ease;
+}
+.group:hover .plat-card-title {
+  color: #5a3d6b;
+}
+
+/* ── Icon — transición suave en hover ── */
+.plat-icon {
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+.group:hover .plat-icon {
+  filter: drop-shadow(0 0 7px rgba(110, 80, 111, 0.45));
+  transform: scale(1.1);
+}
+
+/* ── Divider line de marca ── */
+.plat-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(209, 155, 173, 0.7) 25%,
+    rgba(110, 80, 111, 0.6) 50%,
+    rgba(209, 155, 173, 0.7) 75%,
+    transparent
+  );
+}
+
+/* ── CTA botón de marca ── */
+.orchid-cta {
+  background: linear-gradient(135deg, #d09bad 0%, #6e506f 55%, #5a3d6b 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  box-shadow:
+    0 8px 28px rgba(110, 80, 111, 0.28),
+    0 2px 8px rgba(209, 155, 173, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+.orchid-cta:hover {
+  box-shadow:
+    0 14px 40px rgba(110, 80, 111, 0.38),
+    0 4px 12px rgba(209, 155, 173, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* ── Tarjeta de servicio — paleta de marca ── */
+.brand-card {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  border: 1.5px solid rgba(209, 155, 173, 0.28);
+  box-shadow:
+    0 4px 22px rgba(110, 80, 111, 0.08),
+    0 1px 4px rgba(209, 155, 173, 0.10);
+  overflow: hidden;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.brand-card:hover {
+  box-shadow:
+    0 14px 44px rgba(110, 80, 111, 0.14),
+    0 3px 10px rgba(209, 155, 173, 0.14);
+  border-color: rgba(110, 80, 111, 0.28);
+}
+
+/* ── Acento superior animado (barra de color en la tarjeta) ── */
+.brand-card-accent {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #e9c3d2, #d09bad, #6e506f, #d09bad, #e9c3d2
+  );
+  background-size: 250% auto;
+  animation: brand-accent-sweep 5s linear infinite;
+}
+@keyframes brand-accent-sweep {
+  from { background-position: 200% center; }
+  to   { background-position:   0% center; }
 }

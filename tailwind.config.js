@@ -51,10 +51,16 @@ module.exports = {
           foreground: 'hsl(var(--card-foreground))',
         },
         'pastel-pink': {
-          primary: '#FFB6D9',
-          secondary: '#FFC9E3',
-          tertiary: '#FFE0F0',
-          light: '#FFF5FB',
+          primary: '#D09BAD',   /* logo mauve */
+          secondary: '#E9C3D2', /* logo light mauve */
+          tertiary: '#F0D8E8',
+          light: '#F8EEF4',
+        },
+        'brand': {
+          purple: '#6E506F',
+          mauve:  '#D09BAD',
+          light:  '#E9C3D2',
+          pale:   '#F5EBF2',
         },
         'soft-gray': '#F5F5F5',
       },

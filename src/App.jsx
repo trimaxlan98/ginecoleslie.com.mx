@@ -19,7 +19,7 @@ function App() {
       {isLoading && (
         <LoadingScreen
           onComplete={() => setIsLoading(false)}
-          // logoSrc="/logo-leslie.png"  ← descomenta cuando tengas el logo listo
+          // logoSrc="/logo-draleslie.svg" // Comenta esto para activar animacion
         />
       )}
       <Router>
