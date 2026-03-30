@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Clock, MapPin, Phone } from 'lucide-react';
+import { Calendar, MapPin, Phone } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -26,19 +26,11 @@ const AttentionSchedule = () => {
     {
       location: "Centro Médico del Valle",
       address: "Amores 942, Col del Valle Centro, Benito Juárez, 03100 Ciudad de México, CDMX.",
-      hours: [
-        { days: "Lunes y Miércoles", time: "10:00 - 14:00 hrs" },
-        { days: "Viernes", time: "16:00 - 20:00 hrs" }
-      ],
       color: "bg-blue-50 border-blue-100"
     },
     {
       location: "Grupo Médico Roma Sur",
       address: "Av. Baja California 210-Desp. 402, Roma Sur, Miguel Hidalgo, 06760 Ciudad de México, CDMX.",
-      hours: [
-        { days: "Martes y Jueves", time: "15:00 - 20:00 hrs" },
-        { days: "Sábados", time: "09:00 - 14:00 hrs" }
-      ],
       color: "bg-pastel-pink-light border-pastel-pink-tertiary"
     }
   ];
@@ -53,10 +45,10 @@ const AttentionSchedule = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Horarios de Atención
+            Agenda tu Consulta
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Planifica tu visita eligiendo el horario y ubicación más conveniente para ti. Las consultas son previa cita.
+            Para brindarte la mejor atención y adaptarnos a tus necesidades, todas las consultas se manejan de forma personalizada previa cita.
           </p>
         </motion.div>
 
@@ -77,18 +69,16 @@ const AttentionSchedule = () => {
                     <span>{schedule.address}</span>
                   </div>
 
-                  <div className="space-y-4 mb-8">
-                    {schedule.hours.map((h, i) => (
-                      <div key={i} className="flex items-start space-x-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                        <div className="bg-pastel-pink-tertiary p-2 rounded-full">
-                          <Clock className="text-pastel-pink-primary" size={20} />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-800">{h.days}</p>
-                          <p className="text-gray-600">{h.time}</p>
-                        </div>
+                  <div className="mb-8">
+                    <div className="flex items-start space-x-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                      <div className="bg-pastel-pink-tertiary p-2 rounded-full flex-shrink-0">
+                        <Calendar className="text-pastel-pink-primary" size={20} />
                       </div>
-                    ))}
+                      <div>
+                        <p className="font-semibold text-gray-800">Atención Personalizada</p>
+                        <p className="text-gray-600">Horarios flexibles previa cita. Contáctanos para encontrar el espacio ideal para ti.</p>
+                      </div>
+                    </div>
                   </div>
 
                   <Button 

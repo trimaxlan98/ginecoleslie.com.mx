@@ -1,6 +1,8 @@
 import React from 'react';
-import { Heart, MapPin, Phone, Instagram, Facebook, Linkedin, Clock, Award, ChevronRight } from 'lucide-react';
+import { Heart, MapPin, Phone, Instagram, Linkedin, Clock, Award, ChevronRight } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import logoUrl from '@/assets/logo-dra-leslie.png';
+import doctoraliaLogo from '@/assets/logo-doctoralia.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -42,7 +44,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="mb-5">
               <img
-                src="/logo-dra-leslie.png"
+                src={logoUrl}
                 alt="Dra. Leslie Ordaz — Ginecología y Obstetricia"
                 style={{ height: '90px', width: 'auto', objectFit: 'contain' }}
               />
@@ -51,13 +53,13 @@ const Footer = () => {
               Especialista en Ginecología y Obstetricia de la Universidad Veracruzana. Atención médica integral, empática y de calidad.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-[color,box-shadow] duration-150">
-                <Facebook size={20} />
+              <a href="https://www.doctoralia.com.mx/leslie-alejandra-ordaz-huerta/ginecologo/ciudad-de-mexico" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#00A99D] hover:text-white hover:bg-[#00A99D] hover:shadow-md transition-[color,background-color,box-shadow] duration-150" aria-label="Doctoralia">
+                <img src={doctoraliaLogo} alt="Doctoralia" width={22} height={22} style={{ objectFit: 'contain' }} />
               </a>
               <a href="https://www.instagram.com/gineco.aleslie?igsh=NmcwY2NxbXdxYmZ3" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-[color,box-shadow] duration-150">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-[color,box-shadow] duration-150">
+              <a href="https://www.linkedin.com/in/leslie-alejandra-ordaz-huerta-72233736a" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-[color,box-shadow] duration-150">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -115,17 +117,20 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-6 text-gray-900 border-b-2 border-pastel-pink-primary pb-2 inline-block">Horarios de Atención</h3>
             <ul className="space-y-3 text-sm text-gray-600">
-              <li className="flex justify-between items-center bg-white p-2 rounded-lg shadow-sm">
-                <span className="font-medium flex items-center"><Clock size={14} className="mr-2 text-pastel-pink-primary"/> Lunes - Viernes</span>
-                <span>10:00 - 20:00</span>
+              <li className="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm">
+                <span className="font-medium flex items-center">
+                  <Clock size={16} className="mr-2 text-pastel-pink-primary"/> Atención
+                </span>
+                <span className="font-bold text-gray-800 text-right">Previa Cita</span>
               </li>
-              <li className="flex justify-between items-center bg-white p-2 rounded-lg shadow-sm">
-                <span className="font-medium flex items-center"><Clock size={14} className="mr-2 text-pastel-pink-primary"/> Sábados</span>
-                <span>09:00 - 14:00</span>
+              <li className="flex flex-col bg-white p-3 rounded-lg shadow-sm text-xs text-gray-500">
+                <span>Horarios flexibles adaptados a tus necesidades.</span>
               </li>
-              <li className="flex justify-between items-center bg-gray-100 p-2 rounded-lg border border-red-100">
-                <span className="font-medium flex items-center"><Heart size={14} className="mr-2 text-red-500"/> Urgencias</span>
-                <span className="text-red-500 font-bold">24/7</span>
+              <li className="flex justify-between items-center bg-red-50 p-3 rounded-lg border border-red-100 mt-2">
+                <span className="font-medium flex items-center text-red-700">
+                  <Heart size={16} className="mr-2 text-red-500"/> Urgencias
+                </span>
+                <span className="text-red-600 font-bold">24/7</span>
               </li>
             </ul>
           </div>

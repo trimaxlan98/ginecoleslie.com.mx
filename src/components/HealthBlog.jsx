@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, X } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import copaMenstrualImg from '@/assets/copa-menstrual.png';
 
 const articles = [
   {
@@ -37,7 +38,7 @@ const articles = [
   {
     title: "Mitos y realidades sobre la copa menstrual",
     category: "Salud de la Mujer",
-    image: "/copa menstrual.png",
+    image: copaMenstrualImg,
     date: "28 Sep 2023",
     readTime: "5 min",
     excerpt: "Resolvemos las dudas más comunes sobre el uso de la copa menstrual, sus beneficios y cómo elegir la adecuada.",

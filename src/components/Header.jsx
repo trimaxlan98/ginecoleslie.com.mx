@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import logoUrl from '@/assets/logo-dra-leslie.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -73,7 +74,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" onClick={(e) => handleNavClick(e, '/#inicio')} className="flex items-center space-x-2 group">
             <img
-              src="/logo-dra-leslie.png"
+              src={logoUrl}
               alt="Dra. Leslie Ordaz — Ginecología y Obstetricia"
               className="flex-shrink-0 transition-opacity duration-300 group-hover:opacity-85"
               style={{ height: '52px', width: 'auto', objectFit: 'contain' }}
