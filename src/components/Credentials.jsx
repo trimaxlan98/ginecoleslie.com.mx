@@ -56,9 +56,9 @@ const Credentials = () => {
             }} className="relative">
                 <span className="absolute -left-[43px] top-1 w-5 h-5 bg-white border-4 border-pastel-pink-primary rounded-full shadow-md"></span>
                 <div className="bg-white p-5 rounded-2xl shadow-sm border border-pastel-pink-tertiary/50">
-                  <h4 className="text-xl font-bold text-gray-900">Médico Ginecólogo y Obstetra</h4>
-                  <p className="text-pastel-pink-primary font-bold mb-2">Universidad Veracruzana</p>
-                  <p className="text-gray-600">Formación integral como Médico y especialización rigurosa en Ginecología y Obstetricia con alto sentido ético y humanista.</p>
+                  <h4 className="text-xl font-bold text-gray-900">Licenciatura Médico Cirujano</h4>
+                  <p className="text-pastel-pink-primary font-bold mb-2">Universidad Veracruzana (2011 - 2017)</p>
+                  <p className="text-gray-600">Formación integral como Médico Cirujano con alto sentido ético y profesionalismo.</p>
                 </div>
               </motion.div>
 
@@ -75,9 +75,9 @@ const Credentials = () => {
             }} className="relative">
                 <span className="absolute -left-[43px] top-1 w-5 h-5 bg-white border-4 border-pastel-pink-primary rounded-full shadow-md"></span>
                 <div className="bg-white p-5 rounded-2xl shadow-sm border border-pastel-pink-tertiary/50">
-                  <h4 className="text-xl font-bold text-gray-900">Alta Especialidad en Colposcopía</h4>
-                  <p className="text-pastel-pink-primary font-bold mb-2">Certificación Nacional</p>
-                  <p className="text-gray-600">Especialización en la prevención, diagnóstico y tratamiento de lesiones premalignas del tracto genital inferior.</p>
+                  <h4 className="text-xl font-bold text-gray-900">Especialidad en Ginecología y Obstetricia</h4>
+                  <p className="text-pastel-pink-primary font-bold mb-2">Hospital de Petróleos Mexicanos / Avalada por Universidad Veracruzana (2021 - 2025)</p>
+                  <p className="text-gray-600">Especialización rigurosa con conocimiento profundo de patologías ginecológicas, manejo de embarazo de alto riesgo y hemorragia obstétrica.</p>
                 </div>
               </motion.div>
 
@@ -94,9 +94,9 @@ const Credentials = () => {
             }} className="relative">
                 <span className="absolute -left-[43px] top-1 w-5 h-5 bg-white border-4 border-pastel-pink-primary rounded-full shadow-md"></span>
                 <div className="bg-white p-5 rounded-2xl shadow-sm border border-pastel-pink-tertiary/50">
-                  <h4 className="text-xl font-bold text-gray-900">Experiencia Institucional</h4>
-                  <p className="text-pastel-pink-primary font-bold mb-2">Médico Staff IMSS & Práctica Privada</p>
-                  <p className="text-gray-600">Más de una década brindando atención médica, realizando procedimientos quirúrgicos y consultoría especializada.</p>
+                  <h4 className="text-xl font-bold text-gray-900">Diplomado en Colposcopía Integral</h4>
+                  <p className="text-pastel-pink-primary font-bold mb-2">Avalado por Universidad La Salle (2025 - 2026)</p>
+                  <p className="text-gray-600">Formación avanzada que incluye Workshop en Láser CO2. Actualmente ejerce como Ginecóloga y Obstetra en el Hospital de Ginecoobstetricia Num 3, La Raza IMSS.</p>
                 </div>
               </motion.div>
             </div>

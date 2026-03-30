@@ -131,14 +131,16 @@ const AboutDoctor = () => {
               Dra. Leslie Ordaz Huerta
             </h2>
             <p className="text-slate-500 mb-5 leading-relaxed" style={{ fontSize: '1.04rem' }}>
-              Con una sólida formación académica y años de experiencia clínica, la Dra. Leslie
-              Ordaz Huerta se ha destacado por brindar atención médica de la más alta calidad
-              en el campo de la ginecología y obstetricia.
+              ¿Buscas una consulta donde puedas hablar con total libertad? Mi práctica médica se
+              basa en la confianza mutua y el respeto absoluto a tu individualidad. Creo firmemente
+              que la ginecología debe ser un territorio libre de prejuicios, donde ninguna pregunta
+              sea pequeña y cada inquietud sea validada.
             </p>
             <p className="text-slate-500 mb-9 leading-relaxed" style={{ fontSize: '1.04rem' }}>
-              Como médico staff del IMSS y con consulta privada en clínicas de prestigio, ofrece
-              un servicio integral que combina experiencia profesional, tecnología de vanguardia y
-              un trato humano y personalizado para cada paciente.
+              Me especializo en brindar atención integral con un enfoque actualizado, considerando
+              el manejo conservador como una herramienta fundamental. Mi objetivo es asegurarme de
+              que te vayas de la consulta sintiéndote tranquila, informada y, sobre todo, cuidada.
+              Tu bienestar es el centro de mi atención.
             </p>
 
             {/* Highlights — glass cards */}

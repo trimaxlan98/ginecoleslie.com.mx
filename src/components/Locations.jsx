@@ -1,27 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Phone } from 'lucide-react';
+import { MapPin, Clock, Phone, Navigation } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
 const Locations = () => {
   const locations = [
     {
-      city: 'Ciudad de México (CDMX)',
-      clinic: 'Clínicas de Prestigio en CDMX',
-      description: 'Atención médica en las mejores instalaciones de la capital del país.',
-      icon: MapPin,
+      city: 'Centro Médico del Valle',
+      address: 'Amores 942, Col del Valle Centro, Benito Juárez, 03100 Ciudad de México, CDMX.',
+      mapsUrl: 'https://maps.app.goo.gl/yuxXvV3J9V54EJ47A?g_st=aw',
     },
     {
-      city: 'Satélite',
-      clinic: 'Zona Satélite - Estado de México',
-      description: 'Consultorios modernos y accesibles en la zona metropolitana norte.',
-      icon: MapPin,
-    },
-    {
-      city: 'IMSS',
-      clinic: 'Instituto Mexicano del Seguro Social',
-      description: 'Atención como médico staff en unidades del IMSS.',
-      icon: MapPin,
+      city: 'Grupo Médico Roma Sur',
+      address: 'Av. Baja California 210-Desp. 402, Roma Sur, Miguel Hidalgo, 06760 Ciudad de México, CDMX.',
+      mapsUrl: 'https://maps.app.goo.gl/NQddegZnaCNaPk4F9',
     },
   ];
 
@@ -39,17 +31,12 @@ const Locations = () => {
             Ubicaciones
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-            La Dra. Leslie Ordaz Huerta atiende en múltiples clínicas ubicadas estratégicamente en la 
-            Ciudad de México, Satélite y otras zonas de la República Mexicana para brindar acceso 
-            conveniente a atención médica de calidad.
-          </p>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto">
-            Con consultorios en CDMX, Satélite, y participación en el IMSS, ofrecemos opciones accesibles 
-            para todas las pacientes en diferentes áreas metropolitanas.
+            La Dra. Leslie Ordaz Huerta cuenta con consulta privada en dos ubicaciones estratégicas
+            dentro de la Ciudad de México para brindarte atención especializada cerca de ti.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
           {locations.map((location, index) => (
             <motion.div
               key={index}
@@ -58,20 +45,35 @@ const Locations = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full bg-pastel-pink-tertiary border-pastel-pink-secondary hover:shadow-xl hover:border-pastel-pink-primary transition-all duration-300">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-gradient-to-br from-pastel-pink-primary to-pastel-pink-secondary rounded-full flex items-center justify-center mb-4">
-                    <location.icon className="text-white" size={32} />
+              <Card className="h-full flex flex-col bg-pastel-pink-tertiary border-pastel-pink-secondary hover:shadow-xl hover:border-pastel-pink-primary transition-all duration-300">
+                <CardHeader className="pb-3">
+                  <div className="w-14 h-14 bg-gradient-to-br from-pastel-pink-primary to-pastel-pink-secondary rounded-full flex items-center justify-center mb-4">
+                    <MapPin className="text-white" size={26} />
                   </div>
-                  <CardTitle className="text-gray-800">{location.city}</CardTitle>
-                  <CardDescription className="text-pastel-pink-primary font-semibold">
-                    {location.clinic}
-                  </CardDescription>
+                  <CardTitle className="text-gray-800 text-lg leading-snug">
+                    {location.city}
+                  </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    {location.description}
-                  </p>
+                <CardContent className="flex flex-col flex-1 gap-4">
+                  <CardDescription className="text-gray-600 text-sm leading-relaxed">
+                    {location.address}
+                  </CardDescription>
+                  {location.mapsUrl && (
+                    <a
+                      href={location.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:opacity-80 active:scale-95"
+                      style={{
+                        background: 'linear-gradient(135deg, #D09BAD 0%, #6E506F 100%)',
+                        color: '#fff',
+                        boxShadow: '0 3px 12px rgba(110,80,111,0.25)',
+                      }}
+                    >
+                      <Navigation size={14} strokeWidth={2} />
+                      Cómo llegar
+                    </a>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>

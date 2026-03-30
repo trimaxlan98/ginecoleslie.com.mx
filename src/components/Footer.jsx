@@ -51,13 +51,13 @@ const Footer = () => {
               Especialista en Ginecología y Obstetricia de la Universidad Veracruzana. Atención médica integral, empática y de calidad.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-[color,box-shadow] duration-150">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-all">
+              <a href="https://www.instagram.com/gineco.aleslie?igsh=NmcwY2NxbXdxYmZ3" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-[color,box-shadow] duration-150">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-600 hover:text-pastel-pink-primary hover:shadow-md transition-[color,box-shadow] duration-150">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -97,15 +97,15 @@ const Footer = () => {
               <li className="flex items-start space-x-3 group">
                 <MapPin className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">Consultorio Roma (CDMX)</p>
-                  <p className="text-sm">Av. Cuauhtémoc 123, Cons. 402</p>
+                  <p className="text-sm font-semibold text-gray-800">Centro Médico del Valle</p>
+                  <p className="text-sm">Amores 942, Col del Valle Centro, Benito Juárez, 03100 CDMX.</p>
                 </div>
               </li>
               <li className="flex items-start space-x-3 group">
                 <MapPin className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">Consultorio Satélite</p>
-                  <p className="text-sm">Circuito Médicos 45, Satélite</p>
+                  <p className="text-sm font-semibold text-gray-800">Grupo Médico Roma Sur</p>
+                  <p className="text-sm">Av. Baja California 210-Desp. 402, Roma Sur, 06760 CDMX.</p>
                 </div>
               </li>
             </ul>

@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Loader2 } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
+
+const DOCTOR_EMAIL = 'leslie.a.oh.gyo@gmail.com';
+
+const serviceLabels = {
+  consulta: 'Consulta de Primera Vez',
+  prenatal: 'Control Prenatal',
+  papanicolau: 'Papanicolaou / Colposcopía',
+  cirugia: 'Cirugía Ginecológica',
+  otro: 'Otro',
+};
 
 const ContactForm = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     service: '',
-    message: ''
+    message: '',
   });
 
   const handleChange = (e) => {
@@ -23,17 +30,23 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "¡Mensaje enviado con éxito!",
-        description: "Nos pondremos en contacto contigo lo más pronto posible.",
-      });
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    }, 1500);
+    const service = serviceLabels[formData.service] || formData.service;
+    const subject = encodeURIComponent(`Solicitud de cita — ${service}`);
+    const body = encodeURIComponent(
+`Hola Dra. Leslie,
+
+Mi nombre es ${formData.name} y me gustaría solicitar información sobre: ${service}.
+
+Teléfono de contacto: ${formData.phone}
+Correo de respuesta: ${formData.email}
+
+Mensaje:
+${formData.message}
+
+Quedo en espera de su respuesta.
+Saludos.`
+    );
+    window.location.href = `mailto:${DOCTOR_EMAIL}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -181,18 +194,13 @@ const ContactForm = () => {
 
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="btn-bloom w-full text-white py-6 text-base font-medium rounded-full shadow-lg transition-all duration-300"
+                  className="btn-bloom w-full text-white py-6 text-base font-medium rounded-full shadow-lg"
                   style={{
                     background: 'linear-gradient(135deg, #E0B0B0 0%, #C9857B 60%, #d4706a 100%)',
                     letterSpacing: '0.04em',
                   }}
                 >
-                  {isSubmitting ? (
-                    <><Loader2 className="mr-2 animate-spin" size={20} /> Enviando...</>
-                  ) : (
-                    <><Send className="mr-2" size={20} /> Enviar Mensaje</>
-                  )}
+                  <Send className="mr-2" size={20} /> Enviar Mensaje
                 </Button>
               </form>
             </CardContent>

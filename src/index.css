@@ -8,6 +8,10 @@
 
 /* ── Design Tokens — Logo Brand Palette ── */
 :root {
+  /* ── Custom easing curves (Emil Kowalski) ── */
+  --ease-out:     cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:  cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:  cubic-bezier(0.32, 0.72, 0, 1);
   /* ── Logo Brand ── */
   --brand-purple:  #6E506F;   /* Logo ciruela — color primario */
   --brand-mauve:   #D09BAD;   /* Logo mauve rosa — secundario  */
@@ -93,15 +97,17 @@ h3 {
     0 8px 32px rgba(209, 155, 173, 0.18),
     0 2px 8px rgba(110, 80, 111, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
+  transition: background 200ms ease-out, box-shadow 200ms ease-out, transform 200ms ease-out !important;
 }
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.74) !important;
-  box-shadow:
-    0 16px 48px rgba(209, 155, 173, 0.26),
-    0 4px 12px rgba(110, 80, 111, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.74) !important;
+    box-shadow:
+      0 16px 48px rgba(209, 155, 173, 0.26),
+      0 4px 12px rgba(110, 80, 111, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+    transform: translateY(-2px);
+  }
 }
 
 /* Glass for dark backgrounds (service cards over images) */
@@ -170,19 +176,23 @@ h3 {
 /* ── Card title — color marca, se ilumina en hover ── */
 .plat-card-title {
   color: #6e506f;
-  transition: color 0.35s ease;
+  transition: color 150ms ease-out;
 }
-.group:hover .plat-card-title {
-  color: #5a3d6b;
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .plat-card-title {
+    color: #5a3d6b;
+  }
 }
 
 /* ── Icon — transición suave en hover ── */
 .plat-icon {
-  transition: filter 0.4s ease, transform 0.4s ease;
+  transition: filter 200ms ease-out, transform 200ms ease-out;
 }
-.group:hover .plat-icon {
-  filter: drop-shadow(0 0 7px rgba(110, 80, 111, 0.45));
-  transform: scale(1.1);
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .plat-icon {
+    filter: drop-shadow(0 0 7px rgba(110, 80, 111, 0.45));
+    transform: scale(1.1);
+  }
 }
 
 /* ── Divider line de marca ── */
@@ -207,14 +217,19 @@ h3 {
     0 8px 28px rgba(110, 80, 111, 0.28),
     0 2px 8px rgba(209, 155, 173, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.20);
-  transition: box-shadow 0.4s ease, transform 0.3s ease;
+  transition: box-shadow 200ms ease-out, transform 160ms ease-out;
 }
-.orchid-cta:hover {
-  box-shadow:
-    0 14px 40px rgba(110, 80, 111, 0.38),
-    0 4px 12px rgba(209, 155, 173, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
-  transform: translateY(-2px) scale(1.02);
+.orchid-cta:active {
+  transform: scale(0.97);
+}
+@media (hover: hover) and (pointer: fine) {
+  .orchid-cta:hover {
+    box-shadow:
+      0 14px 40px rgba(110, 80, 111, 0.38),
+      0 4px 12px rgba(209, 155, 173, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px) scale(1.02);
+  }
 }
 
 /* ── Tarjeta de servicio — paleta de marca ── */
@@ -226,13 +241,15 @@ h3 {
     0 4px 22px rgba(110, 80, 111, 0.08),
     0 1px 4px rgba(209, 155, 173, 0.10);
   overflow: hidden;
-  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: box-shadow 200ms ease-out, border-color 200ms ease-out;
 }
-.brand-card:hover {
-  box-shadow:
-    0 14px 44px rgba(110, 80, 111, 0.14),
-    0 3px 10px rgba(209, 155, 173, 0.14);
-  border-color: rgba(110, 80, 111, 0.28);
+@media (hover: hover) and (pointer: fine) {
+  .brand-card:hover {
+    box-shadow:
+      0 14px 44px rgba(110, 80, 111, 0.14),
+      0 3px 10px rgba(209, 155, 173, 0.14);
+    border-color: rgba(110, 80, 111, 0.28);
+  }
 }
 
 /* ── Acento superior animado (barra de color en la tarjeta) ── */
@@ -248,4 +265,29 @@ h3 {
 @keyframes brand-accent-sweep {
   from { background-position: 200% center; }
   to   { background-position:   0% center; }
+}
+
+/* ── prefers-reduced-motion ──────────────────────────
+   Mantiene opacidad y color (ayudan a la comprensión),
+   elimina movimiento y animaciones de posición.
+   ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .plat-text-sweep,
+  .brand-card-accent {
+    animation: none;
+    background-position: 0% center;
+  }
+
+  .btn-bloom:hover {
+    animation: none;
+    transform: none;
+  }
 }

@@ -24,8 +24,8 @@ const AttentionSchedule = () => {
 
   const schedules = [
     {
-      location: "Consultorio CDMX (Roma Norte)",
-      address: "Av. Cuauhtémoc 123, Consultorio 402",
+      location: "Centro Médico del Valle",
+      address: "Amores 942, Col del Valle Centro, Benito Juárez, 03100 Ciudad de México, CDMX.",
       hours: [
         { days: "Lunes y Miércoles", time: "10:00 - 14:00 hrs" },
         { days: "Viernes", time: "16:00 - 20:00 hrs" }
@@ -33,8 +33,8 @@ const AttentionSchedule = () => {
       color: "bg-blue-50 border-blue-100"
     },
     {
-      location: "Consultorio Satélite",
-      address: "Circuito Médicos 45, Cd. Satélite",
+      location: "Grupo Médico Roma Sur",
+      address: "Av. Baja California 210-Desp. 402, Roma Sur, Miguel Hidalgo, 06760 Ciudad de México, CDMX.",
       hours: [
         { days: "Martes y Jueves", time: "15:00 - 20:00 hrs" },
         { days: "Sábados", time: "09:00 - 14:00 hrs" }
@@ -67,7 +67,7 @@ const AttentionSchedule = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
+              transition={{ delay: index * 0.06, ease: [0.23, 1, 0.32, 1] }}
             >
               <Card className={`h-full border-2 ${schedule.color}`}>
                 <CardContent className="p-8">

@@ -32,11 +32,11 @@ const ServiceCard = ({ title, description, image, href, index, icon }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{
-        duration: 0.6,
-        delay: index * 0.09,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        duration: 0.55,
+        delay: index * 0.06,
+        ease: [0.23, 1, 0.32, 1],
       }}
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] } }}
     >
       <Link to={href} className="block group" aria-label={`Ver servicio: ${title}`}>
         <div className="brand-card" style={{ height: '440px', display: 'flex', flexDirection: 'column' }}>
@@ -53,7 +53,7 @@ const ServiceCard = ({ title, description, image, href, index, icon }) => {
               src={`${image}?w=640&q=78`}
               alt=""
               aria-hidden="true"
-              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-200 ease-out group-hover:scale-105"
               style={{ filter: 'brightness(0.75) saturate(0.9)' }}
             />
 

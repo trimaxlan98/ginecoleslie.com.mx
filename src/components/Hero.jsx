@@ -247,6 +247,45 @@ const Hero = () => {
                 Conocer más →
               </a>
             </motion.div>
+
+            {/* Promo badge */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-6 inline-flex flex-col items-center lg:items-start w-full sm:w-auto"
+            >
+              <div
+                className="relative px-5 py-3.5 rounded-2xl w-full sm:w-auto"
+                style={{
+                  background: 'rgba(255,255,255,0.62)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(208,155,173,0.35)',
+                  boxShadow: '0 4px 20px rgba(110,80,111,0.12), inset 0 1px 0 rgba(255,255,255,0.8)',
+                  borderRadius: '1rem 1.75rem 1rem 1.75rem',
+                }}
+              >
+                {/* Top accent line */}
+                <div
+                  className="absolute top-0 left-6 right-6 h-px"
+                  style={{ background: 'linear-gradient(to right, transparent, rgba(208,155,173,0.6), transparent)' }}
+                />
+                <p
+                  className="italic mb-0.5"
+                  style={{ fontSize: '11px', color: '#B08898', letterSpacing: '0.08em' }}
+                >
+                  Si es tu primera consulta
+                </p>
+                <p
+                  className="font-medium leading-snug"
+                  style={{ fontSize: 'clamp(0.82rem, 1.8vw, 0.92rem)', color: '#5A4060' }}
+                >
+                  Al agendar tu primera{' '}
+                  <strong style={{ color: '#6E506F' }}>consulta</strong>,
+                  la segunda es{' '}
+                  <strong style={{ color: '#C9857B' }}>gratis</strong>{' '}✨
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Image column */}

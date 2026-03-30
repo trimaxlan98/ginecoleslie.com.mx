@@ -55,15 +55,15 @@ const ClinicGallery = () => {
             {filteredImages.map((img, index) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
                 key={img.src}
                 className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
                 onClick={() => setSelectedImage(img)}
               >
-                <img src={img.src} alt={img.alt} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-200" />
                 <div className="absolute inset-0 bg-pastel-pink-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <Maximize2 className="text-white w-8 h-8" />
                 </div>
