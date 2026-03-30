@@ -19,7 +19,7 @@ const SocialLinks = () => {
     {
       name: 'Instagram',
       icon: Instagram,
-      url: '#',
+      url: 'https://www.instagram.com/gineco.aleslie?igsh=NmcwY2NxbXdxYmZ3',
       color: 'hover:bg-pink-600',
     },
   ];
@@ -46,7 +46,9 @@ const SocialLinks = () => {
               <motion.a
                 key={index}
                 href={social.url}
-                initial={{ opacity: 0, scale: 0 }}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
