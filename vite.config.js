@@ -298,14 +298,24 @@ export default defineConfig({
 		},
 	},
 	build: {
+		target: 'esnext',
 		assetsInlineLimit: 0,
+		reportCompressedSize: false,
 		rollupOptions: {
 			external: [
 				'@babel/parser',
 				'@babel/traverse',
 				'@babel/generator',
 				'@babel/types'
-			]
-		}
+			],
+			output: {
+				manualChunks: {
+					'vendor-react':   ['react', 'react-dom', 'react-router-dom'],
+					'vendor-motion':  ['framer-motion'],
+					'vendor-ui':      ['@radix-ui/react-dialog', '@radix-ui/react-toast', '@radix-ui/react-dropdown-menu', '@radix-ui/react-tabs'],
+					'vendor-lucide':  ['lucide-react'],
+				},
+			},
+		},
 	}
 });
