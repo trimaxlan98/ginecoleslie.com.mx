@@ -9,11 +9,21 @@
 <IfModule mod_headers.c>
   Header set X-Powered-By "Hostinger Horizons"
 
-  # Cache everything on CDN by default
-  Header set Cache-Control "public, s-maxage=604800, max-age=0"
-  
-  # Cache in browser all assets
+  # HTML: no-cache en browser (siempre verifica si hay nueva versión), CDN cachea 7 días
+  Header set Cache-Control "public, s-maxage=604800, max-age=0, must-revalidate"
+
+  # Assets con hash en el nombre: caché largo (1 año) — Vite genera nombres únicos por versión
   <If "%{REQUEST_URI} =~ m#^/assets/.*$#">
-    Header set Cache-Control "public, max-age=604800"
+    Header set Cache-Control "public, max-age=31536000, immutable"
   </If>
+
+  # Imágenes y fuentes fuera de /assets/
+  <FilesMatch "\.(ico|jpg|jpeg|png|gif|svg|webp|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
+
+# Compresión para reducir tamaño de respuestas y número de bytes transferidos
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
 </IfModule>
