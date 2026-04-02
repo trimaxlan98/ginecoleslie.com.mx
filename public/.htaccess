@@ -1,3 +1,4 @@
+# ─── SPA: React Router fallback ──────────────────────────────────────────────
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -6,13 +7,20 @@
   RewriteRule ^ index.html [L]
 </IfModule>
 
+# ─── Forzar HTTPS ─────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ─── Caché y headers generales ───────────────────────────────────────────────
 <IfModule mod_headers.c>
   Header set X-Powered-By "Hostinger Horizons"
 
-  # HTML: no-cache en browser (siempre verifica si hay nueva versión), CDN cachea 7 días
+  # HTML: browser siempre verifica, CDN cachea 7 días
   Header set Cache-Control "public, s-maxage=604800, max-age=0, must-revalidate"
 
-  # Assets con hash en el nombre: caché largo (1 año) — Vite genera nombres únicos por versión
+  # Assets Vite (tienen hash en nombre): 1 año, inmutable
   <If "%{REQUEST_URI} =~ m#^/assets/.*$#">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </If>
@@ -21,9 +29,56 @@
   <FilesMatch "\.(ico|jpg|jpeg|png|gif|svg|webp|woff|woff2|ttf|eot)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
+
+  # ─── Cabeceras de seguridad ─────────────────────────────────────────────────
+
+  # HSTS: obliga HTTPS durante 1 año (incluye subdominios)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Evita que el browser adivine el MIME type (previene ataques MIME sniffing)
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Bloquea que el sitio sea embebido en iframes externos (previene clickjacking)
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Deshabilita la detección XSS del browser legacy (Chrome moderno lo ignora, no daña)
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Controla qué información de referencia se envía al navegar a otros sitios
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Desactiva funcionalidades del navegador que el sitio no usa
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()"
+
+  # Content Security Policy: define qué recursos puede cargar la página
+  # self    = mismo dominio
+  # fonts.googleapis.com / fonts.gstatic.com = Google Fonts
+  # wa.me / api.whatsapp.com = botón WhatsApp
+  # maps.googleapis.com / maps.gstatic.com = si usas Google Maps
+  Header always set Content-Security-Policy "\
+default-src 'self'; \
+script-src 'self' 'unsafe-inline'; \
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
+font-src 'self' https://fonts.gstatic.com; \
+img-src 'self' data: blob: https:; \
+connect-src 'self' https://wa.me https://api.whatsapp.com; \
+frame-src 'none'; \
+object-src 'none'; \
+base-uri 'self'; \
+form-action 'self' https://wa.me; \
+upgrade-insecure-requests"
+
+  # Elimina la cabecera Server para no exponer versión del servidor
+  Header always unset Server
+  Header always unset X-Powered-By
 </IfModule>
 
-# Compresión para reducir tamaño de respuestas y número de bytes transferidos
+# ─── Compresión gzip ──────────────────────────────────────────────────────────
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml font/woff2
 </IfModule>
+
+# ─── Bloquear acceso a archivos sensibles ─────────────────────────────────────
+<FilesMatch "(^\.env|\.git|\.htpasswd|composer\.(json|lock)|package(-lock)?\.json)$">
+  Require all denied
+</FilesMatch>
