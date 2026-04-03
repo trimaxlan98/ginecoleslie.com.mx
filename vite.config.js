@@ -1,6 +1,7 @@
 import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import { createLogger, defineConfig } from 'vite';
+import obfuscatorPlugin from 'rollup-plugin-obfuscator';
 import inlineEditPlugin from './plugins/visual-editor/vite-plugin-react-inline-editor.js';
 import editModeDevPlugin from './plugins/visual-editor/vite-plugin-edit-mode.js';
 import iframeRouteRestorationPlugin from './plugins/vite-plugin-iframe-route-restoration.js';
@@ -183,6 +184,34 @@ window.fetch = function(...args) {
 };
 `;
 
+const configSecurityConsoleWarning = `
+(function() {
+  const style = 'color:#6E506F;font-size:18px;font-weight:bold;';
+  const style2 = 'color:#D09BAD;font-size:13px;';
+  console.log('%c⚠️ Aviso de seguridad', style);
+  console.log('%cEste es un sitio privado. El acceso no autorizado o la reproducción de su contenido está prohibida.\\nSi encontraste un problema de seguridad, contáctanos.', style2);
+  console.log('%chttps://ginecoleslie.com.mx', 'color:#AF69EE;font-size:12px;');
+
+  // Detección de DevTools abierto — registra timestamp en sessionStorage
+  const devtoolsCheck = new Image();
+  let devtoolsOpen = false;
+  Object.defineProperty(devtoolsCheck, 'id', {
+    get: function() {
+      if (!devtoolsOpen) {
+        devtoolsOpen = true;
+        const log = JSON.parse(sessionStorage.getItem('_seclog') || '[]');
+        log.push({ event: 'devtools_open', ts: new Date().toISOString(), path: location.pathname });
+        sessionStorage.setItem('_seclog', JSON.stringify(log.slice(-20)));
+      }
+    }
+  });
+  setInterval(function() {
+    devtoolsOpen = false;
+    console.dir(devtoolsCheck);
+  }, 3000);
+})();
+`;
+
 const configNavigationHandler = `
 if (window.navigation && window.self !== window.top) {
 	window.navigation.addEventListener('navigate', (event) => {
@@ -240,6 +269,12 @@ const addTransformIndexHtml = {
 				tag: 'script',
 				attrs: { type: 'module' },
 				children: configNavigationHandler,
+				injectTo: 'head',
+			},
+			{
+				tag: 'script',
+				attrs: { type: 'module' },
+				children: configSecurityConsoleWarning,
 				injectTo: 'head',
 			},
 		];
@@ -302,6 +337,23 @@ export default defineConfig({
 		assetsInlineLimit: 0,
 		reportCompressedSize: false,
 		rollupOptions: {
+			plugins: isDev ? [] : [
+				obfuscatorPlugin({
+					options: {
+						identifierNamesGenerator: 'hexadecimal',
+						stringArray: true,
+						stringArrayEncoding: ['base64'],
+						stringArrayThreshold: 0.75,
+						transformObjectKeys: true,
+						deadCodeInjection: false,
+						compact: true,
+						disableConsoleOutput: false,
+					},
+					// Incluye JSX/JS/TS de la app, excluye node_modules y vendors
+					include: ['**/*.jsx', '**/*.js', '**/*.tsx', '**/*.ts'],
+					exclude: ['node_modules/**'],
+				}),
+			],
 			external: [
 				'@babel/parser',
 				'@babel/traverse',
