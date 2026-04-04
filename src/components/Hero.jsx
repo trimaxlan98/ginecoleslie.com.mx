@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useLocation, useNavigate } from 'react-router-dom';
+import heroImage from '@/assets/Leslie_Hero.jpeg';
 
 /* Flower of Life watermark geometry */
 const FOL_R = 38;
@@ -53,7 +53,7 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center overflow-hidden pt-20"
+      className="relative min-h-[calc(100vh-80px)] lg:min-h-screen flex items-center overflow-hidden pt-12 lg:pt-16"
       style={{ background: 'linear-gradient(145deg, #FEFAFA 0%, #FAF0F5 45%, #F5EBF2 100%)' }}
     >
       {/* ── Organic animated background blobs ── */}
@@ -123,8 +123,8 @@ const Hero = () => {
       </svg>
 
       {/* ── Main grid ── */}
-      <div className="container mx-auto px-4 relative z-10 py-14 lg:py-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container mx-auto px-4 relative z-10 py-4 lg:py-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
 
           {/* Text content */}
           <motion.div
@@ -133,50 +133,49 @@ const Hero = () => {
             animate="visible"
             className="text-center lg:text-left order-2 lg:order-1"
           >
-            {/* Tag line */}
+            {/* Tag line / Doctor Name */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center justify-center lg:justify-start space-x-4 mb-7"
+              className="flex items-center justify-center lg:justify-start space-x-4 mb-4"
             >
               <div
-                className="h-px w-10"
+                className="h-px w-8"
                 style={{ background: 'linear-gradient(to right, transparent, #D09BAD)' }}
               />
               <span
                 style={{
                   color: '#6E506F',
-                  letterSpacing: '0.22em',
-                  fontSize: '11px',
+                  letterSpacing: '0.12em',
+                  fontSize: 'clamp(11px, 1.2vw, 13px)',
                   textTransform: 'uppercase',
-                  fontWeight: '500',
+                  fontWeight: '600',
                 }}
               >
-                Especialista Médica
+                Dra. Leslie Alejandra Ordaz Huerta
               </span>
               <div
-                className="h-px w-10 lg:hidden"
+                className="h-px w-8 lg:hidden"
                 style={{ background: 'linear-gradient(to left, transparent, #D09BAD)' }}
               />
             </motion.div>
 
-            {/* Name */}
+            {/* Specialty as H1 */}
             <motion.h1
               variants={itemVariants}
-              className="font-bold text-slate-800 mb-4 leading-tight"
-              style={{ fontSize: 'clamp(2.1rem, 5vw, 3.6rem)', letterSpacing: '0.025em' }}
+              className="font-bold text-slate-800 mb-3 lg:mb-4 leading-[1.05]"
+              style={{ fontSize: 'clamp(2.2rem, 5.2vw, 4rem)', letterSpacing: '-0.02em' }}
             >
-              Dra. Leslie Alejandra
-              <br />
-              <span style={{ color: '#6E506F' }}>Ordaz Huerta</span>
+              Ginecología <br className="hidden sm:block" />
+              <span style={{ color: '#6E506F' }}>& Obstetricia</span>
             </motion.h1>
 
             {/* Organic divider */}
             <motion.div
               variants={itemVariants}
-              className="my-6 mx-auto lg:mx-0"
-              style={{ width: '72%', maxWidth: '320px' }}
+              className="my-3 lg:my-4 mx-auto lg:mx-0"
+              style={{ width: '80%', maxWidth: '320px' }}
             >
-              <svg height="8" viewBox="0 0 320 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg height="6" viewBox="0 0 320 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M0 4 Q 40 1, 80 4 Q 120 7, 160 4 Q 200 1, 240 4 Q 280 7, 320 4"
                   stroke="url(#dividerGrad)"
@@ -194,97 +193,93 @@ const Hero = () => {
               </svg>
             </motion.div>
 
-            {/* Specialty */}
-            <motion.h2
-              variants={itemVariants}
-              className="font-light text-slate-600 mb-6"
-              style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.8rem)', letterSpacing: '0.06em' }}
-            >
-              Ginecología y Obstetricia
-            </motion.h2>
-
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-slate-500 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
-              style={{ fontSize: 'clamp(1rem, 1.5vw, 1.1rem)', lineHeight: '1.75' }}
+              className="text-slate-500 mb-6 lg:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+              style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', lineHeight: '1.6' }}
             >
-              Atención médica integral y especializada para la mujer, con formación en la
-              Universidad Veracruzana y amplia experiencia clínica.{' '}
-              <em style={{ color: '#6E506F', fontStyle: 'normal' }}>Tu salud en manos expertas.</em>
+              Atención médica integral y especializada para la mujer, con formación en la 
+              Universidad Veracruzana y amplia experiencia clínica.
             </motion.p>
 
-            {/* CTA button */}
+            {/* CTA section with integrated Promo */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6"
+              className="flex flex-col items-center lg:items-start space-y-6 lg:space-y-8"
             >
-              <motion.button
-                onClick={handleAppointment}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: 'spring', stiffness: 380, damping: 12 }}
-                className="btn-bloom w-full sm:w-auto flex items-center justify-center gap-3 px-9 py-4 text-white font-medium rounded-full text-base"
-                style={{
-                  background: 'linear-gradient(135deg, #D09BAD 0%, #6E506F 60%, #5A3D6B 100%)',
-                  boxShadow: '0 6px 28px rgba(110, 80, 111, 0.38)',
-                  letterSpacing: '0.04em',
-                }}
-              >
-                <Calendar size={20} strokeWidth={1.8} />
-                Agendar Cita
-              </motion.button>
-
-              <a
-                href="/#sobre"
-                className="text-sm font-medium transition-colors"
-                style={{ color: '#6E506F', letterSpacing: '0.06em' }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('sobre')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Conocer más →
-              </a>
-            </motion.div>
-
-            {/* Promo badge */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-6 inline-flex flex-col items-center lg:items-start w-full sm:w-auto"
-            >
-              <div
-                className="relative px-5 py-3.5 rounded-2xl w-full sm:w-auto"
-                style={{
-                  background: 'rgba(255,255,255,0.62)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(208,155,173,0.35)',
-                  boxShadow: '0 4px 20px rgba(110,80,111,0.12), inset 0 1px 0 rgba(255,255,255,0.8)',
-                  borderRadius: '1rem 1.75rem 1rem 1.75rem',
-                }}
-              >
-                {/* Top accent line */}
-                <div
-                  className="absolute top-0 left-6 right-6 h-px"
-                  style={{ background: 'linear-gradient(to right, transparent, rgba(208,155,173,0.6), transparent)' }}
-                />
-                <p
-                  className="italic mb-0.5"
-                  style={{ fontSize: '11px', color: '#B08898', letterSpacing: '0.08em' }}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-5">
+                <motion.button
+                  onClick={handleAppointment}
+                  whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(110, 80, 111, 0.4)' }}
+                  whileTap={{ scale: 0.97 }}
+                  animate={{ 
+                    boxShadow: ['0 6px 15px rgba(110, 80, 111, 0.2)', '0 6px 30px rgba(110, 80, 111, 0.35)', '0 6px 15px rgba(110, 80, 111, 0.2)']
+                  }}
+                  transition={{ 
+                    type: 'spring', stiffness: 380, damping: 12,
+                    boxShadow: { repeat: Infinity, duration: 2.5, ease: "easeInOut" }
+                  }}
+                  className="btn-bloom w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 text-white font-bold rounded-full text-base lg:text-lg"
+                  style={{
+                    background: 'linear-gradient(135deg, #D09BAD 0%, #6E506F 60%, #5A3D6B 100%)',
+                    letterSpacing: '0.04em',
+                  }}
                 >
-                  Si es tu primera consulta
-                </p>
-                <p
-                  className="font-medium leading-snug"
-                  style={{ fontSize: 'clamp(0.82rem, 1.8vw, 0.92rem)', color: '#5A4060' }}
+                  <Calendar size={20} strokeWidth={2} />
+                  Agendar Cita Ahora
+                </motion.button>
+
+                <a
+                  href="/#sobre"
+                  className="text-sm lg:text-base font-semibold transition-colors flex items-center gap-2 group"
+                  style={{ color: '#6E506F', letterSpacing: '0.04em' }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('sobre')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
-                  Al agendar tu primera{' '}
-                  <strong style={{ color: '#6E506F' }}>consulta</strong>,
-                  la segunda es{' '}
-                  <strong style={{ color: '#C9857B' }}>gratis</strong>{' '}✨
-                </p>
+                  Conocer más <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
               </div>
+
+              {/* Enhanced Commercial Promo Badge */}
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="relative group w-full max-w-md lg:max-w-sm"
+              >
+                <div
+                  className="absolute -inset-0.5 bg-gradient-to-r from-[#D09BAD] via-[#C9857B] to-[#6E506F] rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"
+                />
+                <div
+                  className="relative px-5 py-4 bg-white/90 backdrop-blur-sm rounded-2xl flex flex-col items-center lg:items-start text-center lg:text-left"
+                  style={{
+                    border: '1px solid rgba(208,155,173,0.25)',
+                    boxShadow: '0 8px 24px rgba(110,80,111,0.06)',
+                  }}
+                >
+                  <p
+                    className="font-bold text-slate-400 uppercase tracking-widest mb-1"
+                    style={{ fontSize: '10px' }}
+                  >
+                    ¡Si es tu primera vez con nosotros!
+                  </p>
+                  <p
+                    className="font-bold leading-tight text-[#5A4060]"
+                    style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)' }}
+                  >
+                    Al agendar tu <span className="text-[#D09BAD]">Primer Consulta</span>
+                  </p>
+                  <p
+                    className="font-bold leading-tight text-[#5A4060] mt-1"
+                    style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)' }}
+                  >
+                    La segunda es <span className="px-2 py-0.5 bg-[#FEF3F2] text-[#C9857B] font-black rounded-md border border-[#FADBD8] inline-block shadow-sm">Gratis</span> ✨
+                  </p>
+                </div>
+              </motion.div>
             </motion.div>
           </motion.div>
 
@@ -293,7 +288,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.1, delay: 0.25, ease: 'easeOut' }}
-            className="order-1 lg:order-2 relative mx-auto max-w-md lg:max-w-none"
+            className="order-1 lg:order-2 relative mx-auto max-w-xs lg:max-w-none"
           >
             {/* Organic glow halo */}
             <div
@@ -301,18 +296,9 @@ const Hero = () => {
               style={{
                 background: 'radial-gradient(ellipse at 50% 55%, #D09BAD, transparent 68%)',
                 filter: 'blur(32px)',
-                opacity: 0.55,
-                transform: 'translate(16px, 16px) scale(1.05)',
+                opacity: 0.5,
+                transform: 'translate(12px, 12px) scale(1.05)',
                 borderRadius: '58% 42% 48% 52% / 54% 48% 52% 46%',
-              }}
-            />
-            {/* Secondary decorative ring */}
-            <div
-              className="absolute inset-0 -z-10 border pointer-events-none"
-              style={{
-                borderColor: 'rgba(224, 176, 176, 0.3)',
-                borderRadius: '50% 50% 46% 54% / 52% 46% 54% 48%',
-                transform: 'translate(-14px, -14px) scale(1.06)',
               }}
             />
 
@@ -324,57 +310,36 @@ const Hero = () => {
                 borderColor: 'rgba(255,255,255,0.9)',
               }}
             >
-              <div
-                className="absolute inset-0 z-10 pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(180deg, transparent 55%, rgba(110,80,111,0.22) 100%)',
-                }}
-              />
               <img
-                src="https://images.unsplash.com/photo-1675270714610-11a5cadcc7b3"
+                src={heroImage}
                 alt="Dra. Leslie Alejandra Ordaz Huerta - Ginecología"
                 className="w-full object-cover object-top"
-                style={{ height: 'clamp(360px, 50vw, 580px)' }}
+                style={{ height: 'clamp(280px, 40vw, 480px)' }}
               />
             </div>
 
             {/* Floating experience badge */}
             <motion.div
-              initial={{ opacity: 0, y: 22, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.7, delay: 1.1, type: 'spring', stiffness: 200 }}
-              className="absolute -bottom-5 -left-4 z-20 flex items-center gap-3 px-5 py-3 bg-white/80 backdrop-blur-md rounded-2xl border"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 1.1 }}
+              className="absolute -bottom-3 -left-3 z-20 flex items-center gap-2.5 px-4 py-2 bg-white/85 backdrop-blur-md rounded-xl border"
               style={{
-                borderColor: 'rgba(224,176,176,0.4)',
-                boxShadow: '0 8px 24px rgba(110,80,111,0.18)',
+                borderColor: 'rgba(224,176,176,0.3)',
+                boxShadow: '0 8px 20px rgba(110,80,111,0.12)',
               }}
             >
               <div
-                className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm flex-shrink-0"
+                className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-white text-xs"
                 style={{ background: 'linear-gradient(135deg, #D09BAD, #6E506F)' }}
               >
                 10+
               </div>
               <div>
-                <p className="text-xs font-semibold text-slate-700" style={{ letterSpacing: '0.04em' }}>
-                  Años de
-                </p>
-                <p className="text-xs text-slate-400">Experiencia Clínica</p>
+                <p className="text-[10px] font-bold text-slate-700 leading-tight uppercase tracking-wide">Años de</p>
+                <p className="text-[10px] text-slate-400 leading-tight">Experiencia</p>
               </div>
             </motion.div>
-
-            {/* Petal accent — top right of image */}
-            <motion.div
-              animate={{ rotate: [0, 8, 0], scale: [1, 1.04, 1] }}
-              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute -top-4 -right-4 w-14 h-14 pointer-events-none"
-              style={{
-                background: 'radial-gradient(ellipse, #D09BAD, #E9C3D2)',
-                borderRadius: '62% 38% 55% 45% / 50% 62% 38% 50%',
-                opacity: 0.7,
-              }}
-            />
           </motion.div>
 
         </div>

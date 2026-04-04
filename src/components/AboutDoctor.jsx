@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Heart, Users, Shield } from 'lucide-react';
+import aboutImage from '@/assets/Leslie_como_la_doctora.jpeg';
 
 const AboutDoctor = () => {
   const highlights = [
@@ -98,7 +99,7 @@ const AboutDoctor = () => {
                 }}
               />
               <img
-                src="https://images.unsplash.com/photo-1675270714610-11a5cadcc7b3"
+                src={aboutImage}
                 alt="Dra. Leslie Ordaz Huerta, especialista en ginecología y obstetricia"
                 className="w-full h-auto object-cover"
               />

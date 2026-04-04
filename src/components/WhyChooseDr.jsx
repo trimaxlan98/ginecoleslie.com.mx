@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, HeartPulse, Microscope, ShieldCheck } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import whyLargeImage from '@/assets/Leslie_porque_leslie_grande.jpeg';
+import babyUltrasoundImage from '@/assets/bebe_ultrasonido.jpeg';
 
 const WhyChooseDr = () => {
   const reasons = [
@@ -54,7 +56,7 @@ const WhyChooseDr = () => {
               className="relative rounded-[2rem] overflow-hidden shadow-2xl"
             >
               <img 
-                src="https://images.unsplash.com/photo-1675270714610-11a5cadcc7b3" 
+                src={whyLargeImage} 
                 alt="Dra. Leslie Alejandra Ordaz Huerta en consulta" 
                 className="w-full aspect-[4/5] object-cover"
                 loading="lazy"
@@ -70,8 +72,8 @@ const WhyChooseDr = () => {
               className="absolute -bottom-8 -right-8 w-48 h-48 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden md:block"
             >
               <img 
-                src="https://images.unsplash.com/photo-1666214278797-b2cc1b12be76" 
-                alt="Tecnología médica moderna" 
+                src={babyUltrasoundImage} 
+                alt="Ultrasonido de bebé" 
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
