@@ -53,7 +53,7 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-[calc(100vh-80px)] lg:min-h-screen flex items-center overflow-hidden pt-12 lg:pt-16"
+      className="relative min-h-[100svh] lg:min-h-screen flex items-center overflow-hidden pt-16 lg:pt-20"
       style={{ background: 'linear-gradient(145deg, #FEFAFA 0%, #FAF0F5 45%, #F5EBF2 100%)' }}
     >
       {/* ── Organic animated background blobs ── */}
@@ -123,8 +123,8 @@ const Hero = () => {
       </svg>
 
       {/* ── Main grid ── */}
-      <div className="container mx-auto px-4 relative z-10 py-4 lg:py-6">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+      <div className="container mx-auto px-4 relative z-10 py-8 lg:py-10">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
           {/* Text content */}
           <motion.div
@@ -136,17 +136,17 @@ const Hero = () => {
             {/* Tag line / Doctor Name */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center justify-center lg:justify-start space-x-4 mb-4"
+              className="flex items-center justify-center lg:justify-start space-x-4 mb-4 lg:mb-5"
             >
               <div
-                className="h-px w-8"
+                className="h-px w-8 hidden sm:block"
                 style={{ background: 'linear-gradient(to right, transparent, #D09BAD)' }}
               />
               <span
                 style={{
                   color: '#6E506F',
                   letterSpacing: '0.12em',
-                  fontSize: 'clamp(11px, 1.2vw, 13px)',
+                  fontSize: 'clamp(11px, 1.4vw, 14px)',
                   textTransform: 'uppercase',
                   fontWeight: '600',
                 }}
@@ -154,7 +154,7 @@ const Hero = () => {
                 Dra. Leslie Alejandra Ordaz Huerta
               </span>
               <div
-                className="h-px w-8 lg:hidden"
+                className="h-px w-8 hidden sm:block"
                 style={{ background: 'linear-gradient(to left, transparent, #D09BAD)' }}
               />
             </motion.div>
@@ -162,8 +162,8 @@ const Hero = () => {
             {/* Specialty as H1 */}
             <motion.h1
               variants={itemVariants}
-              className="font-bold text-slate-800 mb-3 lg:mb-4 leading-[1.05]"
-              style={{ fontSize: 'clamp(2.2rem, 5.2vw, 4rem)', letterSpacing: '-0.02em' }}
+              className="font-bold text-slate-800 mb-4 lg:mb-5 leading-[1.1] sm:leading-[1.05]"
+              style={{ fontSize: 'clamp(2rem, 6vw, 4.2rem)', letterSpacing: '-0.02em' }}
             >
               Ginecología <br className="hidden sm:block" />
               <span style={{ color: '#6E506F' }}>& Obstetricia</span>
@@ -172,8 +172,8 @@ const Hero = () => {
             {/* Organic divider */}
             <motion.div
               variants={itemVariants}
-              className="my-3 lg:my-4 mx-auto lg:mx-0"
-              style={{ width: '80%', maxWidth: '320px' }}
+              className="my-4 lg:my-6 mx-auto lg:mx-0"
+              style={{ width: '70%', maxWidth: '340px' }}
             >
               <svg height="6" viewBox="0 0 320 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -196,8 +196,8 @@ const Hero = () => {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-slate-500 mb-6 lg:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
-              style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', lineHeight: '1.6' }}
+              className="text-slate-500 mb-8 lg:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0"
+              style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.2rem)', lineHeight: '1.65' }}
             >
               Atención médica integral y especializada para la mujer, con formación en la 
               Universidad Veracruzana y amplia experiencia clínica.
@@ -206,9 +206,9 @@ const Hero = () => {
             {/* CTA section with integrated Promo */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col items-center lg:items-start space-y-6 lg:space-y-8"
+              className="flex flex-col items-center lg:items-start space-y-8 lg:space-y-10"
             >
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-5">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto px-4 sm:px-0">
                 <motion.button
                   onClick={handleAppointment}
                   whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(110, 80, 111, 0.4)' }}
@@ -220,19 +220,19 @@ const Hero = () => {
                     type: 'spring', stiffness: 380, damping: 12,
                     boxShadow: { repeat: Infinity, duration: 2.5, ease: "easeInOut" }
                   }}
-                  className="btn-bloom w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 text-white font-bold rounded-full text-base lg:text-lg"
+                  className="btn-bloom w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 text-white font-bold rounded-full text-base lg:text-lg"
                   style={{
                     background: 'linear-gradient(135deg, #D09BAD 0%, #6E506F 60%, #5A3D6B 100%)',
                     letterSpacing: '0.04em',
                   }}
                 >
-                  <Calendar size={20} strokeWidth={2} />
+                  <Calendar size={22} strokeWidth={2} />
                   Agendar Cita Ahora
                 </motion.button>
 
                 <a
                   href="/#sobre"
-                  className="text-sm lg:text-base font-semibold transition-colors flex items-center gap-2 group"
+                  className="text-base font-semibold transition-colors flex items-center gap-2 group"
                   style={{ color: '#6E506F', letterSpacing: '0.04em' }}
                   onClick={(e) => {
                     e.preventDefault();
@@ -248,35 +248,35 @@ const Hero = () => {
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="relative group w-full max-w-md lg:max-w-sm"
+                className="relative group w-full max-w-sm lg:max-w-md px-4 sm:px-0"
               >
                 <div
                   className="absolute -inset-0.5 bg-gradient-to-r from-[#D09BAD] via-[#C9857B] to-[#6E506F] rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"
                 />
                 <div
-                  className="relative px-5 py-4 bg-white/90 backdrop-blur-sm rounded-2xl flex flex-col items-center lg:items-start text-center lg:text-left"
+                  className="relative px-6 py-5 bg-white/95 backdrop-blur-sm rounded-2xl flex flex-col items-center lg:items-start text-center lg:text-left"
                   style={{
-                    border: '1px solid rgba(208,155,173,0.25)',
-                    boxShadow: '0 8px 24px rgba(110,80,111,0.06)',
+                    border: '1px solid rgba(208,155,173,0.3)',
+                    boxShadow: '0 10px 30px rgba(110,80,111,0.08)',
                   }}
                 >
                   <p
-                    className="font-bold text-slate-400 uppercase tracking-widest mb-1"
-                    style={{ fontSize: '10px' }}
+                    className="font-bold text-slate-400 uppercase tracking-widest mb-1.5"
+                    style={{ fontSize: '11px' }}
                   >
                     ¡Si es tu primera vez con nosotros!
                   </p>
                   <p
                     className="font-bold leading-tight text-[#5A4060]"
-                    style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)' }}
+                    style={{ fontSize: 'clamp(1.15rem, 2.5vw, 1.5rem)' }}
                   >
                     Al agendar tu <span className="text-[#D09BAD]">Primer Consulta</span>
                   </p>
                   <p
-                    className="font-bold leading-tight text-[#5A4060] mt-1"
-                    style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)' }}
+                    className="font-bold leading-tight text-[#5A4060] mt-1.5"
+                    style={{ fontSize: 'clamp(1.15rem, 2.5vw, 1.5rem)' }}
                   >
-                    La segunda es <span className="px-2 py-0.5 bg-[#FEF3F2] text-[#C9857B] font-black rounded-md border border-[#FADBD8] inline-block shadow-sm">Gratis</span> ✨
+                    La segunda es <span className="px-3 py-1 bg-[#FEF3F2] text-[#C9857B] font-black rounded-lg border border-[#FADBD8] inline-block shadow-md text-2xl sm:text-3xl ml-1">Gratis</span> ✨
                   </p>
                 </div>
               </motion.div>
@@ -288,7 +288,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.1, delay: 0.25, ease: 'easeOut' }}
-            className="order-1 lg:order-2 relative mx-auto max-w-xs lg:max-w-none"
+            className="order-1 lg:order-2 relative mx-auto w-full max-w-[280px] sm:max-w-xs lg:max-w-none mb-4 lg:mb-0"
           >
             {/* Organic glow halo */}
             <div
@@ -314,7 +314,7 @@ const Hero = () => {
                 src={heroImage}
                 alt="Dra. Leslie Alejandra Ordaz Huerta - Ginecología"
                 className="w-full object-cover object-top"
-                style={{ height: 'clamp(280px, 40vw, 480px)' }}
+                style={{ height: 'clamp(260px, 45vw, 500px)' }}
               />
             </div>
 
@@ -323,21 +323,21 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 1.1 }}
-              className="absolute -bottom-3 -left-3 z-20 flex items-center gap-2.5 px-4 py-2 bg-white/85 backdrop-blur-md rounded-xl border"
+              className="absolute -bottom-2 -left-2 z-20 flex items-center gap-2.5 px-4 py-2.5 bg-white/90 backdrop-blur-md rounded-xl border"
               style={{
-                borderColor: 'rgba(224,176,176,0.3)',
-                boxShadow: '0 8px 20px rgba(110,80,111,0.12)',
+                borderColor: 'rgba(224,176,176,0.35)',
+                boxShadow: '0 8px 25px rgba(110,80,111,0.15)',
               }}
             >
               <div
-                className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-white text-xs"
+                className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-xs sm:text-sm"
                 style={{ background: 'linear-gradient(135deg, #D09BAD, #6E506F)' }}
               >
                 10+
               </div>
               <div>
-                <p className="text-[10px] font-bold text-slate-700 leading-tight uppercase tracking-wide">Años de</p>
-                <p className="text-[10px] text-slate-400 leading-tight">Experiencia</p>
+                <p className="text-[10px] sm:text-xs font-bold text-slate-700 leading-tight uppercase tracking-wide">Años de</p>
+                <p className="text-[10px] sm:text-xs text-slate-400 leading-tight">Experiencia</p>
               </div>
             </motion.div>
           </motion.div>
