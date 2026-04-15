@@ -13,12 +13,12 @@ const AboutDoctor = () => {
     {
       icon: Users,
       title: 'Personal IMSS',
-      description: 'Médico staff del Instituto Mexicano del Seguro Social',
+      description: 'Médico adscrito Especialista en Ginecología y Obstetricia del Hospital de Gineco Obstetricia No. 3, CMN "La Raza".',
     },
     {
       icon: Shield,
       title: 'Clínicas de Prestigio',
-      description: 'Atención privada en las mejores clínicas de México',
+      description: 'Con credencialización en las mejores clínicas privadas',
     },
     {
       icon: Heart,

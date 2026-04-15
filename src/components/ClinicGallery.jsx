@@ -6,13 +6,30 @@ const ClinicGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [filter, setFilter] = useState('Todas');
 
-  const categories = ['Todas', 'Consultorio', 'Equipamiento'];
+  const categories = ['Todas', 'Consultorio', 'Equipamiento', 'Sala de espera'];
 
+  /*
+   * ─── FOTOGRAFÍAS DE LAS INSTALACIONES ────────────────────────────────────
+   * Para insertar las fotos reales, reemplaza el campo `src` de cada objeto:
+   *   · Importa la imagen:  import foto1 from '@/assets/instalaciones/foto1.jpg';
+   *   · O usa ruta directa: src: '/assets/instalaciones/foto1.jpg'
+   * Los campos `category` y `alt` ya están listos; solo ajusta el alt si cambia
+   * el contenido de la toma.
+   * ─────────────────────────────────────────────────────────────────────────
+   */
   const images = [
-    { src: 'https://images.unsplash.com/photo-1616391182219-e080b4d1043a', category: 'Consultorio', alt: 'Interior de consultorio moderno' },
-    { src: 'https://images.unsplash.com/photo-1565647946321-a146ac24a220', category: 'Equipamiento', alt: 'Equipamiento médico avanzado' },
-    { src: 'https://images.unsplash.com/photo-1660220617553-95cb021c0a5e', category: 'Consultorio', alt: 'Sala de revisión' },
-    { src: 'https://images.unsplash.com/photo-1580281657702-257584239a55', category: 'Equipamiento', alt: 'Instrumental médico' },
+    // FOTO 1 — Consultorio: vista general de la sala de consulta
+    { src: 'https://images.unsplash.com/photo-1616391182219-e080b4d1043a', category: 'Consultorio',    alt: 'Vista general del consultorio' },
+    // FOTO 2 — Equipamiento: equipo de ultrasonido
+    { src: 'https://images.unsplash.com/photo-1565647946321-a146ac24a220', category: 'Equipamiento',   alt: 'Equipo de ultrasonido' },
+    // FOTO 3 — Sala de espera: recepción / área de espera
+    { src: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133', category: 'Sala de espera', alt: 'Área de recepción y sala de espera' },
+    // FOTO 4 — Consultorio: camilla y área de revisión
+    { src: 'https://images.unsplash.com/photo-1660220617553-95cb021c0a5e', category: 'Consultorio',    alt: 'Área de revisión clínica' },
+    // FOTO 5 — Equipamiento: instrumental y material médico
+    { src: 'https://images.unsplash.com/photo-1580281657702-257584239a55', category: 'Equipamiento',   alt: 'Instrumental médico especializado' },
+    // FOTO 6 — Consultorio: escritorio / área de consulta privada
+    { src: 'https://images.unsplash.com/photo-1666214280557-f1b5022eb634', category: 'Consultorio',    alt: 'Área de consulta privada' },
   ];
 
   const filteredImages = filter === 'Todas' ? images : images.filter(img => img.category === filter);
@@ -27,7 +44,7 @@ const ClinicGallery = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Nuestras Instalaciones
+            NUESTRAS INSTALACIONES
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
             Espacios diseñados para tu comodidad y equipados con tecnología de vanguardia.
@@ -50,7 +67,7 @@ const ClinicGallery = () => {
           </div>
         </motion.div>
 
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <AnimatePresence>
             {filteredImages.map((img, index) => (
               <motion.div

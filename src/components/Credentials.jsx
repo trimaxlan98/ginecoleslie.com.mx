@@ -29,7 +29,7 @@ const Credentials = () => {
       }} className="text-center mb-16">
           <span className="text-pastel-pink-primary font-bold tracking-wider uppercase text-sm mb-4 block">Experiencia y Profesionalismo</span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Credenciales Médicas
+            FORMACIÓN ACADÉMICA
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Formación académica rigurosa y actualización médica continua al servicio de tu salud.
@@ -96,7 +96,7 @@ const Credentials = () => {
                 <div className="bg-white p-5 rounded-2xl shadow-sm border border-pastel-pink-tertiary/50">
                   <h4 className="text-xl font-bold text-gray-900">Diplomado en Colposcopía Integral</h4>
                   <p className="text-pastel-pink-primary font-bold mb-2">Avalado por Universidad La Salle (2025 - 2026)</p>
-                  <p className="text-gray-600">Formación avanzada que incluye Workshop en Láser CO2. Actualmente ejerce como Ginecóloga y Obstetra en el Hospital de Ginecoobstetricia Num 3, La Raza IMSS.</p>
+                  <p className="text-gray-600">Médico adscrito Especialista en Ginecología y Obstetricia del Hospital de Gineco Obstetricia No. 3, CMN 'La Raza'.</p>
                 </div>
               </motion.div>
             </div>
@@ -129,7 +129,7 @@ const Credentials = () => {
                     <FileCheck className="text-pastel-pink-primary" size={24} />
                   </div>
                   <h4 className="font-bold text-gray-900 text-sm">Cédula Profesional</h4>
-                  <p className="text-xs text-gray-500 mt-1">Nacional y Estatal</p>
+                  <p className="text-xs text-gray-500 mt-1">11520122 (MÉDICO CIRUJANO)</p>
                 </CardContent>
               </Card>
 
@@ -138,8 +138,18 @@ const Credentials = () => {
                   <div className="w-12 h-12 bg-pastel-pink-light rounded-full flex items-center justify-center mx-auto mb-3">
                     <Briefcase className="text-pastel-pink-primary" size={24} />
                   </div>
-                  <h4 className="font-bold text-gray-900 text-sm">Membresías</h4>
-                  <p className="text-xs text-gray-500 mt-1">Colegio Médico de México y AMGO</p>
+                  <h4 className="font-bold text-gray-900 text-sm">CERTIFICACIÓN</h4>
+                  <p className="text-xs text-gray-500 mt-1">Certificada por el Colegio Mexicano de Ginecología y Obstetricia</p>
+                </CardContent>
+              </Card>
+
+              <Card className="col-span-2 bg-white border-gray-100 shadow-sm hover:shadow-md transition-shadow hover:border-pastel-pink-primary">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-pastel-pink-light rounded-full flex items-center justify-center mx-auto mb-3">
+                    <FileCheck className="text-pastel-pink-primary" size={24} />
+                  </div>
+                  <h4 className="font-bold text-gray-900 text-sm">Cédula de Especialidad</h4>
+                  <p className="text-xs text-gray-500 mt-1">14950812 (Ginecología y Obstetricia)</p>
                 </CardContent>
               </Card>
             </div>

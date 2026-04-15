@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import ServiceCard from './ServiceCard';
+import OtherServices from './OtherServices';
 
 /* ────────────────────────────────────────────────────────────
    PALETA EXCLUSIVA DE MARCA
@@ -119,7 +120,7 @@ const services = [
     icon: <PrenatalIcon />,
   },
   {
-    title: 'Atención del Parto',
+    title: 'Atención del Parto Humanizado',
     description: 'Acompañamiento profesional durante el parto vaginal, garantizando seguridad, respeto y bienestar integral.',
     image: 'https://images.unsplash.com/photo-1543594722-b309814dad6a',
     href: '/birth',
@@ -141,7 +142,7 @@ const services = [
   },
   {
     title: 'Colposcopía',
-    description: 'Estudio especializado y detallado del cuello uterino para un diagnóstico preciso y prevención oportuna.',
+    description: 'Estudio especializado y detallado del cuello uterino para un diagnóstico preciso y oportuno.',
     image: 'https://images.unsplash.com/photo-1580281657702-257584239a55',
     href: '/colposcopy',
     icon: <ColposcopiaIcon />,
@@ -242,7 +243,7 @@ const Services = () => {
               letterSpacing: '0.025em',
             }}
           >
-            Especialidades Médicas
+            SERVICIOS
           </h2>
 
           {/* Joya divisora */}
@@ -290,6 +291,9 @@ const Services = () => {
             />
           ))}
         </div>
+
+        {/* ── Otros Servicios y Padecimientos ── */}
+        <OtherServices />
 
         {/* ── CTA inferior ── */}
         <motion.div

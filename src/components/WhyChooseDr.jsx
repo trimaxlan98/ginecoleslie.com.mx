@@ -10,7 +10,7 @@ const WhyChooseDr = () => {
     {
       icon: Award,
       title: "Experiencia y Trayectoria",
-      description: "Más de 10 años de experiencia clínica en instituciones públicas (IMSS) y práctica privada, garantizando diagnósticos certeros y tratamientos efectivos."
+      description: "Amplia experiencia clínica en instituciones públicas (IMSS) y práctica privada, garantizando diagnósticos certeros y tratamientos efectivos."
     },
     {
       icon: HeartPulse,

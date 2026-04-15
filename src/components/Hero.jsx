@@ -330,14 +330,14 @@ const Hero = () => {
               }}
             >
               <div
-                className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-xs sm:text-sm"
+                className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-base"
                 style={{ background: 'linear-gradient(135deg, #D09BAD, #6E506F)' }}
               >
-                10+
+                ✦
               </div>
               <div>
-                <p className="text-[10px] sm:text-xs font-bold text-slate-700 leading-tight uppercase tracking-wide">Años de</p>
-                <p className="text-[10px] sm:text-xs text-slate-400 leading-tight">Experiencia</p>
+                <p className="text-[10px] sm:text-xs font-bold text-slate-700 leading-tight uppercase tracking-wide">Amplia</p>
+                <p className="text-[10px] sm:text-xs text-slate-400 leading-tight">experiencia</p>
               </div>
             </motion.div>
           </motion.div>
