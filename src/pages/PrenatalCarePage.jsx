@@ -30,9 +30,9 @@ const PrenatalCarePage = () => {
   return (
     <>
       <Helmet>
-        <title>Control Prenatal CDMX y Satélite | Dra. Leslie Alejandra Ordaz Huerta</title>
-        <meta name="description" content="Control prenatal integral por la Dra. Leslie Alejandra Ordaz Huerta en CDMX y Satélite. Cuidamos de ti y de tu bebé en cada etapa del embarazo." />
-        <meta name="keywords" content="control prenatal CDMX, obstetra Satélite, ginecóloga embarazo, ultrasonido estructural, Dra. Leslie Alejandra Ordaz Huerta" />
+        <title>Control Prenatal CDMX | Dra. Leslie Alejandra Ordaz Huerta</title>
+        <meta name="description" content="Control prenatal integral por la Dra. Leslie Alejandra Ordaz Huerta en CDMX. Cuidamos de ti y de tu bebé en cada etapa del embarazo." />
+        <meta name="keywords" content="control prenatal CDMX, obstetra CDMX, ginecóloga embarazo, ultrasonido estructural, Dra. Leslie Alejandra Ordaz Huerta" />
         <link rel="canonical" href="https://tusitio.com/prenatal-care" />
         <meta property="og:title" content="Control Prenatal | Dra. Leslie Alejandra Ordaz Huerta" />
         <meta property="og:description" content="Atención médica integral durante tu embarazo." />

@@ -26,7 +26,7 @@ const CesareanPage = () => {
       <Helmet>
         <title>Cesárea Segura CDMX | Dra. Leslie Alejandra Ordaz Huerta</title>
         <meta name="description" content="Atención de parto por cesárea con los más altos estándares de seguridad y tecnología médica. Agenda tu cita con la Dra. Leslie Alejandra." />
-        <meta name="keywords" content="cesárea segura CDMX, ginecóloga cirujana, operación cesárea Satélite, Dra. Leslie Alejandra Ordaz Huerta" />
+        <meta name="keywords" content="cesárea segura CDMX, ginecóloga cirujana, operación cesárea CDMX, Dra. Leslie Alejandra Ordaz Huerta" />
         <link rel="canonical" href="https://tusitio.com/cesarean" />
       </Helmet>
 

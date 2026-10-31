@@ -6,15 +6,9 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 const Locations = () => {
   const locations = [
     {
-      city: 'Ciudad de México (CDMX)',
-      clinic: 'Clínicas de Prestigio en CDMX',
-      description: 'Atención médica en las mejores instalaciones de la capital del país.',
-      icon: MapPin,
-    },
-    {
-      city: 'Satélite',
-      clinic: 'Zona Satélite - Estado de México',
-      description: 'Consultorios modernos y accesibles en la zona metropolitana norte.',
+      city: 'Consultorio Amores',
+      clinic: 'Ciudad de México (CDMX)',
+      description: 'Consultorio privado con sala de exploración y ultrasonido, en la capital del país.',
       icon: MapPin,
     },
     {
@@ -39,17 +33,14 @@ const Locations = () => {
             Ubicaciones
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-            La Dra. Leslie Ordaz Huerta atiende en múltiples clínicas ubicadas estratégicamente en la 
-            Ciudad de México, Satélite y otras zonas de la República Mexicana para brindar acceso 
-            conveniente a atención médica de calidad.
+            La Dra. Leslie Ordaz Huerta atiende en su consultorio de la calle Amores, en la Ciudad de México, y como médico staff en unidades del IMSS.
           </p>
           <p className="text-base text-gray-600 max-w-2xl mx-auto">
-            Con consultorios en CDMX, Satélite, y participación en el IMSS, ofrecemos opciones accesibles 
-            para todas las pacientes en diferentes áreas metropolitanas.
+            Consulta privada con cita previa y participación en el IMSS, para ofrecer opciones accesibles a todas las pacientes.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
           {locations.map((location, index) => (
             <motion.div
               key={index}
@@ -88,7 +79,7 @@ const Locations = () => {
           <Clock className="mx-auto mb-4" size={48} />
           <h3 className="text-2xl font-bold mb-2">Agenda tu Cita</h3>
           <p className="text-white/95 mb-4">
-            Contáctanos por WhatsApp para conocer horarios disponibles y ubicación específica de cada consultorio
+            Contáctanos por WhatsApp para conocer horarios disponibles y ubicación del consultorio
           </p>
           <div className="flex items-center justify-center space-x-2 text-white/95">
             <Phone size={20} />

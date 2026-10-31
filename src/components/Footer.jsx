@@ -99,15 +99,8 @@ const Footer = () => {
               <li className="flex items-start space-x-3 group">
                 <MapPin className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">Consultorio Roma (CDMX)</p>
-                  <p className="text-sm">Av. Cuauhtémoc 123, Cons. 402</p>
-                </div>
-              </li>
-              <li className="flex items-start space-x-3 group">
-                <MapPin className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
-                <div>
-                  <p className="text-sm font-semibold text-gray-800">Consultorio Satélite</p>
-                  <p className="text-sm">Circuito Médicos 45, Satélite</p>
+                  <p className="text-sm font-semibold text-gray-800">Consultorio Amores (CDMX)</p>
+                  <p className="text-sm">Calle Amores, Ciudad de México</p>
                 </div>
               </li>
             </ul>

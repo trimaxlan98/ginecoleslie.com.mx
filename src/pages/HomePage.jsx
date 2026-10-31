@@ -24,9 +24,9 @@ const HomePage = () => {
         <title>Dra. Leslie Alejandra Ordaz Huerta - Ginecóloga y Obstetra en CDMX</title>
         <meta 
           name="description" 
-          content="Dra. Leslie Alejandra Ordaz Huerta, especialista en ginecología y obstetricia. Atención médica en CDMX y Satélite. Control prenatal, colposcopía y salud integral." 
+          content="Dra. Leslie Alejandra Ordaz Huerta, especialista en ginecología y obstetricia. Atención médica en CDMX. Control prenatal, colposcopía y salud integral." 
         />
-        <meta name="keywords" content="ginecóloga CDMX, obstetra Satélite, Dra. Leslie Alejandra Ordaz Huerta, control prenatal, colposcopía, ginecólogo de confianza" />
+        <meta name="keywords" content="ginecóloga CDMX, obstetra CDMX, Dra. Leslie Alejandra Ordaz Huerta, control prenatal, colposcopía, ginecólogo de confianza" />
         <link rel="canonical" href="https://tusitio.com/" />
         <meta property="og:title" content="Dra. Leslie Alejandra Ordaz Huerta | Ginecología" />
         <meta property="og:description" content="Especialista en Ginecología y Obstetricia en CDMX." />
@@ -43,11 +43,6 @@ const HomePage = () => {
                   "@type": "PostalAddress",
                   "addressLocality": "Ciudad de México",
                   "addressRegion": "CDMX"
-                },
-                {
-                  "@type": "PostalAddress",
-                  "addressLocality": "Naucalpan",
-                  "addressRegion": "Estado de México"
                 }
               ]
             }

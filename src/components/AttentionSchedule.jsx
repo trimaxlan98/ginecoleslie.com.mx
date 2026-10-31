@@ -24,22 +24,13 @@ const AttentionSchedule = () => {
 
   const schedules = [
     {
-      location: "Consultorio CDMX (Roma Norte)",
-      address: "Av. Cuauhtémoc 123, Consultorio 402",
+      location: "Consultorio Amores",
+      address: "Calle Amores, Ciudad de México",
       hours: [
         { days: "Lunes y Miércoles", time: "10:00 - 14:00 hrs" },
         { days: "Viernes", time: "16:00 - 20:00 hrs" }
       ],
       color: "bg-blue-50 border-blue-100"
-    },
-    {
-      location: "Consultorio Satélite",
-      address: "Circuito Médicos 45, Cd. Satélite",
-      hours: [
-        { days: "Martes y Jueves", time: "15:00 - 20:00 hrs" },
-        { days: "Sábados", time: "09:00 - 14:00 hrs" }
-      ],
-      color: "bg-pastel-pink-light border-pastel-pink-tertiary"
     }
   ];
 
@@ -60,7 +51,7 @@ const AttentionSchedule = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid gap-8 max-w-2xl mx-auto">
           {schedules.map((schedule, index) => (
             <motion.div
               key={index}
