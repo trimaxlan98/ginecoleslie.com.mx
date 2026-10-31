@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
 const WhatsAppButton = () => {
-  const phoneNumber = '525512345678'; // Replace with actual WhatsApp number
+  const phoneNumber = '525523258289'; // WhatsApp de la asistente
   const message = encodeURIComponent('Hola Dra. Leslie Alejandra Ordaz Huerta, me gustaría agendar una consulta.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
@@ -17,7 +17,7 @@ const WhatsAppButton = () => {
         className="mb-3 px-4 py-3 bg-white rounded-2xl shadow-xl border border-pastel-pink-tertiary hidden sm:block relative"
       >
         <p className="text-sm text-gray-800 font-bold mb-1">¿Necesitas una cita?</p>
-        <p className="text-xs text-gray-500">Atención: Lun-Vie 10am-8pm</p>
+        <p className="text-xs text-gray-500">Consulta con cita: 8am-1pm</p>
         {/* Arrow pointer */}
         <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-b border-r border-pastel-pink-tertiary transform rotate-45"></div>
       </motion.div>

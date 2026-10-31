@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, MapPin, Phone, Instagram, Facebook, Linkedin, Clock, Award, ChevronRight } from 'lucide-react';
+import { Heart, MessageCircle, MapPin, Phone, Instagram, Facebook, Linkedin, Clock, Award, ChevronRight } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
@@ -92,15 +92,22 @@ const Footer = () => {
               <li className="flex items-start space-x-3 group">
                 <Phone className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">Teléfono / WhatsApp</p>
-                  <a href="tel:+525512345678" className="text-sm hover:text-pastel-pink-primary transition-colors">+52 55 1234 5678</a>
+                  <p className="text-sm font-semibold text-gray-800">Teléfono fijo</p>
+                  <a href="tel:+525585650449" className="text-sm hover:text-pastel-pink-primary transition-colors">55 8565 0449</a>
+                </div>
+              </li>
+              <li className="flex items-start space-x-3 group">
+                <MessageCircle className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
+                <div>
+                  <p className="text-sm font-semibold text-gray-800">WhatsApp (asistente)</p>
+                  <a href="https://wa.me/525523258289" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-pastel-pink-primary transition-colors">55 2325 8289</a>
                 </div>
               </li>
               <li className="flex items-start space-x-3 group">
                 <MapPin className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
                 <div>
                   <p className="text-sm font-semibold text-gray-800">Consultorio Amores (CDMX)</p>
-                  <p className="text-sm">Calle Amores, Ciudad de México</p>
+                  <p className="text-sm">Amores 942, Col. del Valle Centro, Benito Juárez, 03100 CDMX</p>
                 </div>
               </li>
             </ul>
@@ -111,12 +118,8 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-6 text-gray-900 border-b-2 border-pastel-pink-primary pb-2 inline-block">Horarios de Atención</h3>
             <ul className="space-y-3 text-sm text-gray-600">
               <li className="flex justify-between items-center bg-white p-2 rounded-lg shadow-sm">
-                <span className="font-medium flex items-center"><Clock size={14} className="mr-2 text-pastel-pink-primary"/> Lunes - Viernes</span>
-                <span>10:00 - 20:00</span>
-              </li>
-              <li className="flex justify-between items-center bg-white p-2 rounded-lg shadow-sm">
-                <span className="font-medium flex items-center"><Clock size={14} className="mr-2 text-pastel-pink-primary"/> Sábados</span>
-                <span>09:00 - 14:00</span>
+                <span className="font-medium flex items-center"><Clock size={14} className="mr-2 text-pastel-pink-primary"/> Consulta (previa cita)</span>
+                <span>08:00 - 13:00</span>
               </li>
               <li className="flex justify-between items-center bg-gray-100 p-2 rounded-lg border border-red-100">
                 <span className="font-medium flex items-center"><Heart size={14} className="mr-2 text-red-500"/> Urgencias</span>

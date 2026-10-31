@@ -38,13 +38,16 @@ const HomePage = () => {
               "name": "Dra. Leslie Alejandra Ordaz Huerta",
               "medicalSpecialty": ["Ginecología", "Obstetricia"],
               "description": "Médico especialista en ginecología, obstetricia y colposcopía.",
-              "address": [
-                {
-                  "@type": "PostalAddress",
-                  "addressLocality": "Ciudad de México",
-                  "addressRegion": "CDMX"
-                }
-              ]
+              "telephone": "+525585650449",
+              "openingHours": "08:00-13:00",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Amores 942, Col. del Valle Centro",
+                "addressLocality": "Benito Juárez, Ciudad de México",
+                "postalCode": "03100",
+                "addressRegion": "CDMX",
+                "addressCountry": "MX"
+              }
             }
           `}
         </script>

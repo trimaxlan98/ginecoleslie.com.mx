@@ -25,10 +25,9 @@ const AttentionSchedule = () => {
   const schedules = [
     {
       location: "Consultorio Amores",
-      address: "Calle Amores, Ciudad de México",
+      address: "Amores 942, Col. del Valle Centro, Benito Juárez, 03100 Ciudad de México, CDMX",
       hours: [
-        { days: "Lunes y Miércoles", time: "10:00 - 14:00 hrs" },
-        { days: "Viernes", time: "16:00 - 20:00 hrs" }
+        { days: "Horario de consulta (previa cita)", time: "8:00 - 13:00 hrs" }
       ],
       color: "bg-blue-50 border-blue-100"
     }

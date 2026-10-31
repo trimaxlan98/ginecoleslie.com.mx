@@ -33,7 +33,7 @@ const Locations = () => {
             Ubicaciones
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-            La Dra. Leslie Ordaz Huerta atiende en su consultorio de la calle Amores, en la Ciudad de México, y como médico staff en unidades del IMSS.
+            La Dra. Leslie Ordaz Huerta atiende en su consultorio de Amores 942, Col. del Valle Centro, Benito Juárez, Ciudad de México, y como médico staff en unidades del IMSS.
           </p>
           <p className="text-base text-gray-600 max-w-2xl mx-auto">
             Consulta privada con cita previa y participación en el IMSS, para ofrecer opciones accesibles a todas las pacientes.
