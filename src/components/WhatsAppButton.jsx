@@ -22,7 +22,7 @@ const WhatsAppButton = () => {
         className="mb-3 px-4 py-3 bg-white rounded-2xl shadow-xl border border-pastel-pink-tertiary hidden sm:block relative"
       >
         <p className="text-sm text-gray-800 font-bold mb-1">¿Necesitas una cita?</p>
-        <p className="text-xs text-gray-500">Presencial: Lun a Juev</p>
+        <p className="text-xs text-gray-500">Presencial: Lun a Vie 8am-1pm</p>
         <p className="text-xs text-gray-500">En línea: Lun a Dom</p>
         <p className="text-[10px] text-gray-400 italic mt-1.5 border-t border-gray-100 pt-1.5">
           *Restricciones: Válido solo cuando la primera consulta es en línea.

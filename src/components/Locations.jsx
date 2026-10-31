@@ -7,14 +7,9 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 const Locations = () => {
   const locations = [
     {
-      city: 'Centro Médico del Valle',
+      city: 'Consultorio Amores',
       address: 'Amores 942, Col del Valle Centro, Benito Juárez, 03100 Ciudad de México, CDMX.',
       mapsUrl: 'https://maps.app.goo.gl/yuxXvV3J9V54EJ47A?g_st=aw',
-    },
-    {
-      city: 'Grupo Médico Roma Sur',
-      address: 'Av. Baja California 210-Desp. 402, Roma Sur, Miguel Hidalgo, 06760 Ciudad de México, CDMX.',
-      mapsUrl: 'https://maps.app.goo.gl/NQddegZnaCNaPk4F9',
     },
   ];
 
@@ -32,12 +27,11 @@ const Locations = () => {
             Ubicaciones
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-            La Dra. Leslie Ordaz Huerta cuenta con consulta privada en dos ubicaciones estratégicas
-            dentro de la Ciudad de México para brindarte atención especializada cerca de ti.
+            La Dra. Leslie Ordaz Huerta atiende en consulta privada en la colonia Del Valle, Ciudad de México, y como médico staff del IMSS.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
+        <div className="grid gap-8 mb-12 max-w-md mx-auto">
           {locations.map((location, index) => (
             <motion.div
               key={index}

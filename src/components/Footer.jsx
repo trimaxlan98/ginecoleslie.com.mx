@@ -106,15 +106,8 @@ const Footer = () => {
               <li className="flex items-start space-x-3 group">
                 <MapPin className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">Centro Médico del Valle</p>
+                  <p className="text-sm font-semibold text-gray-800">Consultorio Amores</p>
                   <p className="text-sm">Amores 942, Col del Valle Centro, Benito Juárez, 03100 CDMX.</p>
-                </div>
-              </li>
-              <li className="flex items-start space-x-3 group">
-                <MapPin className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
-                <div>
-                  <p className="text-sm font-semibold text-gray-800">Grupo Médico Roma Sur</p>
-                  <p className="text-sm">Av. Baja California 210-Desp. 402, Roma Sur, 06760 CDMX.</p>
                 </div>
               </li>
             </ul>
@@ -126,12 +119,12 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-gray-600">
               <li className="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm">
                 <span className="font-medium flex items-center">
-                  <Clock size={16} className="mr-2 text-pastel-pink-primary"/> Atención
+                  <Clock size={16} className="mr-2 text-pastel-pink-primary"/> Consulta
                 </span>
-                <span className="font-bold text-gray-800 text-right">Previa Cita</span>
+                <span className="font-bold text-gray-800 text-right">Lun - Vie, 8:00 - 13:00</span>
               </li>
               <li className="flex flex-col bg-white p-3 rounded-lg shadow-sm text-xs text-gray-500">
-                <span>Horarios flexibles adaptados a tus necesidades.</span>
+                <span>Consulta previa cita.</span>
               </li>
             </ul>
           </div>

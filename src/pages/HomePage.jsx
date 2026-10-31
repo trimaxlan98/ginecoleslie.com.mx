@@ -39,6 +39,7 @@ const HomePage = () => {
               "medicalSpecialty": ["Ginecología", "Obstetricia"],
               "description": "Médico especialista en ginecología, obstetricia y colposcopía.",
               "telephone": "+525585650449",
+              "openingHours": "Mo-Fr 08:00-13:00",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Amores 942, Col. del Valle Centro",

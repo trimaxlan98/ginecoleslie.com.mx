@@ -24,14 +24,9 @@ const AttentionSchedule = () => {
 
   const schedules = [
     {
-      location: "Centro Médico del Valle",
+      location: "Consultorio Amores",
       address: "Amores 942, Col del Valle Centro, Benito Juárez, 03100 Ciudad de México, CDMX.",
       color: "bg-blue-50 border-blue-100"
-    },
-    {
-      location: "Grupo Médico Roma Sur",
-      address: "Av. Baja California 210-Desp. 402, Roma Sur, Miguel Hidalgo, 06760 Ciudad de México, CDMX.",
-      color: "bg-pastel-pink-light border-pastel-pink-tertiary"
     }
   ];
 
@@ -52,7 +47,7 @@ const AttentionSchedule = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid gap-8 max-w-2xl mx-auto">
           {schedules.map((schedule, index) => (
             <motion.div
               key={index}
@@ -75,8 +70,8 @@ const AttentionSchedule = () => {
                         <Calendar className="text-pastel-pink-primary" size={20} />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-800">Atención Personalizada</p>
-                        <p className="text-gray-600">Horarios flexibles previa cita. Contáctanos para encontrar el espacio ideal para ti.</p>
+                        <p className="font-semibold text-gray-800">Lunes a Viernes, 8:00 a 13:00 hrs</p>
+                        <p className="text-gray-600">Consulta previa cita. Contáctanos por WhatsApp o llama al consultorio para agendar.</p>
                       </div>
                     </div>
                   </div>
@@ -86,7 +81,7 @@ const AttentionSchedule = () => {
                     className="w-full bg-gray-800 hover:bg-gray-700 text-white rounded-xl py-6"
                   >
                     <Phone className="mr-2" size={20} />
-                    Agendar en {schedule.location.split(' ')[1]}
+                    Agendar cita
                   </Button>
                 </CardContent>
               </Card>
