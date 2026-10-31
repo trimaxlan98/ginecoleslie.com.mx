@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Phone } from 'lucide-react';
+import ClinicMap from '@/components/ClinicMap';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
 const Locations = () => {
@@ -68,6 +69,8 @@ const Locations = () => {
             </motion.div>
           ))}
         </div>
+
+        <ClinicMap />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -27,7 +27,7 @@ const AttentionSchedule = () => {
       location: "Consultorio Amores",
       address: "Amores 942, Col. del Valle Centro, Benito Juárez, 03100 Ciudad de México, CDMX",
       hours: [
-        { days: "Horario de consulta (previa cita)", time: "8:00 - 13:00 hrs" }
+        { days: "Lunes a Viernes (previa cita)", time: "8:00 - 13:00 hrs" }
       ],
       color: "bg-blue-50 border-blue-100"
     }
@@ -100,7 +100,7 @@ const AttentionSchedule = () => {
           viewport={{ once: true }}
           className="mt-12 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-center text-yellow-800 text-sm"
         >
-          <p><strong>Nota:</strong> En caso de urgencias obstétricas, las pacientes registradas cuentan con un número de atención 24/7 proporcionado durante su consulta.</p>
+          <p><strong>Nota:</strong> La atención es con cita previa. Agenda por WhatsApp o llama al consultorio. Ante una emergencia, acude al servicio de urgencias más cercano.</p>
         </motion.div>
       </div>
     </section>

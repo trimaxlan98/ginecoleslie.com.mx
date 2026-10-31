@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, MessageCircle, MapPin, Phone, Instagram, Facebook, Linkedin, Clock, Award, ChevronRight } from 'lucide-react';
+import { MessageCircle, MapPin, Phone, Instagram, Facebook, Linkedin, Clock, Award, ChevronRight } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
@@ -118,12 +118,8 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-6 text-gray-900 border-b-2 border-pastel-pink-primary pb-2 inline-block">Horarios de Atención</h3>
             <ul className="space-y-3 text-sm text-gray-600">
               <li className="flex justify-between items-center bg-white p-2 rounded-lg shadow-sm">
-                <span className="font-medium flex items-center"><Clock size={14} className="mr-2 text-pastel-pink-primary"/> Consulta (previa cita)</span>
+                <span className="font-medium flex items-center"><Clock size={14} className="mr-2 text-pastel-pink-primary"/> Lunes - Viernes</span>
                 <span>08:00 - 13:00</span>
-              </li>
-              <li className="flex justify-between items-center bg-gray-100 p-2 rounded-lg border border-red-100">
-                <span className="font-medium flex items-center"><Heart size={14} className="mr-2 text-red-500"/> Urgencias</span>
-                <span className="text-red-500 font-bold">24/7</span>
               </li>
             </ul>
           </div>

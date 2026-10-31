@@ -17,7 +17,7 @@ const WhatsAppButton = () => {
         className="mb-3 px-4 py-3 bg-white rounded-2xl shadow-xl border border-pastel-pink-tertiary hidden sm:block relative"
       >
         <p className="text-sm text-gray-800 font-bold mb-1">¿Necesitas una cita?</p>
-        <p className="text-xs text-gray-500">Consulta con cita: 8am-1pm</p>
+        <p className="text-xs text-gray-500">Atención: Lun-Vie 8am-1pm</p>
         {/* Arrow pointer */}
         <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-b border-r border-pastel-pink-tertiary transform rotate-45"></div>
       </motion.div>
