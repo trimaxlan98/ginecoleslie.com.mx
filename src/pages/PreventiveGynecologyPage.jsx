@@ -26,7 +26,7 @@ const PreventiveGynecologyPage = () => {
       <Helmet>
         <title>Ginecología Preventiva CDMX | Dra. Leslie Alejandra Ordaz Huerta</title>
         <meta name="description" content="Check-up ginecológico anual, papanicolaou, y detección temprana con la Dra. Leslie Alejandra Ordaz Huerta. Protege tu salud femenina." />
-        <meta name="keywords" content="check up ginecológico, papanicolaou CDMX, ginecóloga Satélite, prevención salud mujer, Dra. Leslie Alejandra" />
+        <meta name="keywords" content="check up ginecológico, papanicolaou CDMX, ginecóloga Amores CDMX, prevención salud mujer, Dra. Leslie Alejandra" />
         <link rel="canonical" href="https://tusitio.com/preventive-gynecology" />
       </Helmet>
 

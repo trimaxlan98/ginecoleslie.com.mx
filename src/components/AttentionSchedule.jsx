@@ -100,7 +100,7 @@ const AttentionSchedule = () => {
           viewport={{ once: true }}
           className="mt-12 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-center text-yellow-800 text-sm"
         >
-          <p><strong>Nota:</strong> En caso de urgencias obstétricas, las pacientes registradas cuentan con un número de atención 24/7 proporcionado durante su consulta.</p>
+          <p><strong>Nota:</strong> Ante una emergencia, acude al servicio de urgencias más cercano.</p>
         </motion.div>
       </div>
     </section>

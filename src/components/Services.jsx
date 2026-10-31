@@ -304,7 +304,7 @@ const Services = () => {
           className="text-center mt-14"
         >
           <a
-            href="https://wa.me/5215512345678"
+            href="https://wa.me/525523258289"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 orchid-cta btn-bloom"

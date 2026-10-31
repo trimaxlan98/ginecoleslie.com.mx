@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, MapPin, Phone, Instagram, Linkedin, Clock, Award, ChevronRight } from 'lucide-react';
+import { MessageCircle, MapPin, Phone, Instagram, Linkedin, Clock, Award, ChevronRight } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logoUrl from '@/assets/logo-dra-leslie.png';
 import doctoraliaLogo from '@/assets/logo-doctoralia.png';
@@ -92,8 +92,15 @@ const Footer = () => {
               <li className="flex items-start space-x-3 group">
                 <Phone className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">Teléfono / WhatsApp</p>
-                  <a href="tel:+525512345678" className="text-sm hover:text-pastel-pink-primary transition-colors">+52 55 1234 5678</a>
+                  <p className="text-sm font-semibold text-gray-800">Teléfono fijo</p>
+                  <a href="tel:+525585650449" className="text-sm hover:text-pastel-pink-primary transition-colors">55 8565 0449</a>
+                </div>
+              </li>
+              <li className="flex items-start space-x-3 group">
+                <MessageCircle className="text-pastel-pink-primary flex-shrink-0 mt-1" size={18} />
+                <div>
+                  <p className="text-sm font-semibold text-gray-800">WhatsApp (asistente)</p>
+                  <a href="https://wa.me/525523258289" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-pastel-pink-primary transition-colors">55 2325 8289</a>
                 </div>
               </li>
               <li className="flex items-start space-x-3 group">
@@ -125,12 +132,6 @@ const Footer = () => {
               </li>
               <li className="flex flex-col bg-white p-3 rounded-lg shadow-sm text-xs text-gray-500">
                 <span>Horarios flexibles adaptados a tus necesidades.</span>
-              </li>
-              <li className="flex justify-between items-center bg-red-50 p-3 rounded-lg border border-red-100 mt-2">
-                <span className="font-medium flex items-center text-red-700">
-                  <Heart size={16} className="mr-2 text-red-500"/> Urgencias
-                </span>
-                <span className="text-red-600 font-bold">24/7</span>
               </li>
             </ul>
           </div>

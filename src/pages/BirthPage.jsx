@@ -25,8 +25,8 @@ const BirthPage = () => {
     <>
       <Helmet>
         <title>Atención de Parto CDMX | Dra. Leslie Alejandra Ordaz Huerta</title>
-        <meta name="description" content="Atención de parto vaginal humanizado y respetado con la Dra. Leslie Alejandra Ordaz Huerta. Recibe a tu bebé en un entorno seguro en CDMX o Satélite." />
-        <meta name="keywords" content="parto humanizado CDMX, atención de parto Satélite, ginecóloga parto, Dra. Leslie Alejandra Ordaz Huerta, nacimiento respetado" />
+        <meta name="description" content="Atención de parto vaginal humanizado y respetado con la Dra. Leslie Alejandra Ordaz Huerta. Recibe a tu bebé en un entorno seguro en CDMX." />
+        <meta name="keywords" content="parto humanizado CDMX, atención de parto CDMX, ginecóloga parto, Dra. Leslie Alejandra Ordaz Huerta, nacimiento respetado" />
         <link rel="canonical" href="https://tusitio.com/birth" />
         <meta property="og:title" content="Parto Humanizado | Dra. Leslie Alejandra Ordaz Huerta" />
         <script type="application/ld+json">

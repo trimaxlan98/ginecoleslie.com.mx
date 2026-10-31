@@ -8,7 +8,7 @@ const WhatsAppIcon = () => (
 );
 
 const WhatsAppButton = () => {
-  const phoneNumber = '525512345678';
+  const phoneNumber = '525523258289';
   const message = encodeURIComponent('Hola Dra. Leslie Alejandra Ordaz Huerta, me gustaría agendar una consulta.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
